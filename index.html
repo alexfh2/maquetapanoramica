@@ -38,8 +38,8 @@ header.solid{background:rgba(27,35,24,0.94);backdrop-filter:blur(10px);padding:1
 .logo-mark{display:flex;align-items:center;gap:10px;flex:none;}
 .logo-mark img{height:76px;width:auto;border-radius:3px;transition:height .3s ease;}
 header.solid .logo-mark img{height:52px;}
-nav.primary-nav{display:flex;align-items:center;gap:clamp(10px,1.3vw,20px);flex:none;}
-nav.primary-nav a{font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#fff;font-weight:500;white-space:nowrap;opacity:0.92;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .2s ease,opacity .2s ease;}
+nav.primary-nav{display:flex;align-items:center;gap:clamp(8px,1vw,16px);flex:none;}
+nav.primary-nav a{font-size:13px;letter-spacing:0.09em;text-transform:uppercase;color:#fff;font-weight:500;white-space:nowrap;opacity:0.92;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .2s ease,opacity .2s ease;}
 nav.primary-nav a:hover{opacity:1;border-color:var(--terracotta);}
 nav.primary-nav .dot{color:rgba(255,255,255,0.4);font-size:10px;}
 .nav-item{position:relative;}
@@ -48,18 +48,22 @@ nav.primary-nav .dot{color:rgba(255,255,255,0.4);font-size:10px;}
 .nav-item.open > a .caret{transform:rotate(225deg) translateY(1px);}
 .nav-dropdown{
 position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);
-margin-top:16px;min-width:220px;
-background:var(--dark-panel);
-box-shadow:0 24px 48px -16px rgba(0,0,0,0.5);
-border-radius:2px;
-padding:10px 4px;
+margin-top:18px;min-width:220px;
+background:rgba(27,35,24,0.62);
+backdrop-filter:blur(16px) saturate(140%);
+-webkit-backdrop-filter:blur(16px) saturate(140%);
+border-top:1px solid rgba(255,255,255,0.55);
+box-shadow:0 20px 44px -18px rgba(0,0,0,0.55);
+border-radius:1px;
+padding:14px 6px;
 display:flex;flex-direction:column;
 opacity:0;visibility:hidden;pointer-events:none;
-transition:opacity .25s ease, transform .25s ease, visibility .25s;
+transition:opacity .3s ease, transform .3s ease, visibility .3s;
 z-index:60;
 }
 .nav-item.open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
 .nav-dropdown a{
+text-shadow:0 1px 6px rgba(0,0,0,0.4);
 font-family:var(--sans);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;
 color:#fff;opacity:.82;white-space:nowrap;padding:11px 18px;border-bottom:none;
 transition:opacity .2s ease, padding-left .2s ease;
@@ -68,6 +72,15 @@ transition:opacity .2s ease, padding-left .2s ease;
 .lang-select{display:flex;gap:7px;font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.65);flex:none;white-space:nowrap;}
 .lang-select button{color:inherit;font-size:11px;}
 .lang-select button.active{color:#fff;font-weight:600;}
+.header-actions{display:flex;align-items:center;gap:12px;flex:none;}
+.btn-compact{padding:9px 15px;font-size:10px;letter-spacing:0.08em;white-space:nowrap;}
+.header-actions .nav-item .nav-dropdown{left:auto;right:0;transform:translateY(6px);min-width:90px;}
+.header-actions .nav-item.open .nav-dropdown{transform:translateY(0);}
+.header-actions .nav-item .nav-dropdown a{text-align:center;}
+.lang-current{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#fff;font-weight:500;opacity:.92;}
+.lang-current:hover{opacity:1;}
+.lang-current .caret{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.7;margin-left:6px;display:inline-block;transition:transform .25s ease;}
+.nav-item.open .lang-current .caret{transform:rotate(225deg) translateY(1px);}
 .burger{display:none;flex-direction:column;gap:5px;width:24px;flex:none;}
 .burger span{height:1px;background:#fff;width:100%;}
 .mobile-nav{position:fixed;inset:0;z-index:200;background:var(--dark-panel);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:40px;transform:translateY(-100%);transition:transform .4s ease;}
@@ -151,9 +164,10 @@ h1.hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(42px,7vw,
 .contact-details .sep{margin:0 10px;color:rgba(255,255,255,0.4);}
 footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:26px clamp(20px,5vw,64px);font-size:12px;color:var(--ink-soft);}
 footer .flangs{display:flex;gap:10px;}
-@media (max-width:980px){
+@media (max-width:1320px){
 nav.primary-nav{display:none;}
 .lang-select{display:none;}
+.header-actions .lang-dropdown{display:none;}
 .burger{display:flex;}
 .intro-top{grid-template-columns:1fr;gap:20px;}
 .intro-stats{grid-template-columns:1fr 1fr;row-gap:24px;}
@@ -184,7 +198,7 @@ nav.primary-nav{display:none;}
 <a href="#campo">18 Hoyos</a>
 <a href="#campo">Instalaciones</a>
 <a href="#campo">Escuela de Golf</a>
-<a href="#contacto">Reservar Tee Time</a>
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener">Reservar Tee Time</a>
 </div>
 </div>
 <span class="dot">·</span>
@@ -203,8 +217,17 @@ nav.primary-nav{display:none;}
 <a href="#contacto">Contacto</a>
 </nav>
 
-<div class="lang-select">
-<button class="active">ES</button>·<button>EN</button>·<button>DE</button>·<button>CA</button>·<button>FR</button>
+<div class="header-actions">
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary btn-compact">Reservar Tee Time</a>
+<div class="nav-item has-dropdown lang-dropdown">
+<a href="#" class="lang-current" id="langCurrent"><span class="lang-code">ES</span><span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="#" class="lang-option" data-lang="EN">EN</a>
+<a href="#" class="lang-option" data-lang="DE">DE</a>
+<a href="#" class="lang-option" data-lang="CA">CA</a>
+<a href="#" class="lang-option" data-lang="FR">FR</a>
+</div>
+</div>
 </div>
 <button class="burger" id="burgerBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
 </header>
@@ -392,10 +415,10 @@ heroVideo.load();
 
 mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-document.querySelectorAll('.lang-select button').forEach(btn=>{
-btn.addEventListener('click', ()=>{
-document.querySelectorAll('.lang-select button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+document.querySelectorAll('.lang-option').forEach(opt=>{
+opt.addEventListener('click', (e)=>{
+e.preventDefault();
+document.getElementById('langCurrent').querySelector('.lang-code').textContent = opt.dataset.lang;
 });
 });
 
