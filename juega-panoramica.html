@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panorámica Golf, Sports &amp; Resort — Stay. Play. Enjoy the Mediterranean.</title>
+<title>Juega Panorámica — Panorámica Golf, Sports &amp; Resort</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,10 +39,6 @@ header.solid{background:rgba(27,35,24,0.94);backdrop-filter:blur(10px);padding:1
 header.solid .logo-mark{height:52px;}
 .logo-mark img{position:absolute;top:0;left:0;height:76px;width:auto;max-width:none;transition:opacity .5s ease, height .3s ease;}
 header.solid .logo-mark img{height:52px;}
-.logo-mark .logo-base{opacity:1;}
-.logo-mark .logo-scrolled{opacity:0;}
-header.solid .logo-mark .logo-base{opacity:0;}
-header.solid .logo-mark .logo-scrolled{opacity:1;}
 
 nav.primary-nav{display:flex;align-items:center;gap:clamp(8px,1vw,16px);flex:none;}
 nav.primary-nav a{font-size:13px;letter-spacing:0.09em;text-transform:uppercase;color:#fff;font-weight:500;white-space:nowrap;opacity:0.92;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .2s ease,opacity .2s ease;}
@@ -191,32 +187,180 @@ nav.primary-nav{display:none;}
 }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 
-/* ---------- Cinematic full-bleed section ---------- */
-.cine-section{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;}
+/* ============ CAMPO — página dedicada ============ */
+.page-hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+.page-hero-media{position:absolute;inset:0;z-index:0;}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;animation:campoKen 24s ease-in-out infinite alternate;}
+@keyframes campoKen{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.page-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.42) 0%, rgba(15,17,12,0.08) 30%, rgba(15,17,12,0.2) 55%, rgba(15,17,12,0.78) 100%);}
+.page-hero-body{position:relative;z-index:2;color:#fff;padding:120px clamp(20px,5vw,64px) 56px;max-width:760px;}
+.breadcrumb{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+.breadcrumb a{border-bottom:1px solid rgba(255,255,255,0.35);}
+.page-hero-body h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(38px,5.4vw,66px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-top:14px;}
+.page-hero-body .hero-sub{margin-top:18px;max-width:52ch;}
+
+.quick-tiles{margin-top:-64px;position:relative;z-index:4;padding:0 clamp(20px,5vw,64px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cream);border:1px solid var(--line);}
+.tile{padding:30px 22px 26px;border-right:1px solid var(--line);transition:background .2s ease;}
+.tile:last-child{border-right:none;}
+.tile:hover{background:rgba(185,116,82,0.06);}
+.tile-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:13px;display:block;margin-bottom:12px;}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:8px;line-height:1.2;}
+.tile p{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;min-height:30px;}
+.tile .text-link{font-size:10px;}
+
+.detail-section{padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);}
+.detail-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center;}
+.detail-grid.reverse .detail-media{order:2;}
+.detail-media img{width:100%;height:460px;object-fit:cover;}
+.detail-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;line-height:1.15;}
+.detail-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:18px;max-width:46ch;}
+.detail-stats{display:flex;border-top:1px solid var(--line);margin-top:30px;padding-top:24px;}
+.detail-stats div{flex:1;padding-right:14px;}
+.detail-stats b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--terracotta);}
+.detail-stats span{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+.detail-text .text-link, .detail-text .btn{margin-top:28px;}
+
+.price-table{border-top:1px solid var(--line);margin-top:8px;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);}
+.price-row .p-name{font-family:var(--serif);font-size:17px;}
+.price-row .p-meta{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+.price-row .p-val{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:19px;white-space:nowrap;}
+.price-note{font-size:12.5px;color:var(--ink-soft);margin-top:20px;}
+
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+.amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
+
+.campo-cta{background:var(--dark-panel);color:#fff;padding:clamp(50px,7vw,80px) clamp(20px,5vw,64px);text-align:center;}
+.campo-cta .eyebrow{color:rgba(255,255,255,0.6);}
+.campo-cta h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(28px,3.8vw,42px);margin:14px auto 26px;max-width:22ch;}
+
+@media (max-width:980px){
+.tiles-grid{grid-template-columns:1fr 1fr;}
+.tile{border-bottom:1px solid var(--line);}
+.tile:nth-child(2n){border-right:none;}
+.quick-tiles{margin-top:-40px;}
+.detail-grid{grid-template-columns:1fr;gap:36px;}
+.detail-grid.reverse .detail-media{order:-1;}
+.detail-media img{height:320px;}
+.amenity-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+.tiles-grid{grid-template-columns:1fr;}
+.tile{border-right:none;}
+}
+
+/* ============ JUEGA PANORÁMICA — página dedicada ============ */
+.page-hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+.page-hero-media{position:absolute;inset:0;z-index:0;}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;animation:pageKen 24s ease-in-out infinite alternate;}
+@keyframes pageKen{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.page-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.42) 0%, rgba(15,17,12,0.08) 30%, rgba(15,17,12,0.2) 55%, rgba(15,17,12,0.78) 100%);}
+.page-hero-body{position:relative;z-index:2;color:#fff;padding:120px clamp(20px,5vw,64px) 56px;max-width:760px;}
+.breadcrumb{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+.breadcrumb a{border-bottom:1px solid rgba(255,255,255,0.35);}
+.page-hero-body h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(38px,5.4vw,66px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-top:14px;}
+.page-hero-body .hero-sub{margin-top:18px;max-width:52ch;font-family:var(--sans);font-size:15px;color:rgba(255,255,255,0.82);}
+
+.quick-tiles{margin-top:-64px;position:relative;z-index:4;padding:0 clamp(20px,5vw,64px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--cream);border:1px solid var(--line);}
+.tile{padding:30px 22px 26px;border-right:1px solid var(--line);transition:background .2s ease;}
+.tile:last-child{border-right:none;}
+.tile:hover{background:rgba(185,116,82,0.06);}
+.tile-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:13px;display:block;margin-bottom:12px;}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:16px;margin-bottom:8px;line-height:1.2;}
+.tile p{font-size:12px;color:var(--ink-soft);margin-bottom:14px;min-height:30px;}
+.tile .text-link{font-size:10px;}
+
+.detail-section{padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);}
+.detail-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center;}
+.detail-grid.reverse .detail-media{order:2;}
+.detail-media img{width:100%;height:460px;object-fit:cover;}
+.detail-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;line-height:1.15;}
+.detail-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:18px;max-width:46ch;}
+.detail-text .text-link, .detail-text .btn{margin-top:28px;}
+
+.price-table{border-top:1px solid var(--line);margin-top:8px;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);}
+.price-row .p-name{font-family:var(--serif);font-size:17px;}
+.price-row .p-meta{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+.price-row .p-val{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:19px;white-space:nowrap;}
+.price-note{font-size:12.5px;color:var(--ink-soft);margin-top:20px;}
+
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+.amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
+
+.pkg-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px;}
+.pkg-mini{}
+.pkg-mini img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.pkg-mini h3{font-family:var(--serif);font-weight:400;font-size:19px;margin-top:16px;}
+.pkg-mini .meta{font-size:12.5px;color:var(--ink-soft);margin-top:6px;}
+.pkg-mini .price{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-top:8px;}
+
+.page-cta{background:var(--dark-panel);color:#fff;padding:clamp(50px,7vw,80px) clamp(20px,5vw,64px);text-align:center;}
+.page-cta .eyebrow{color:rgba(255,255,255,0.6);}
+.page-cta h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(28px,3.8vw,42px);margin:14px auto 26px;max-width:24ch;}
+
+@media (max-width:980px){
+.tiles-grid{grid-template-columns:1fr 1fr;}
+.tile{border-bottom:1px solid var(--line);}
+.tile:nth-child(2n){border-right:none;}
+.quick-tiles{margin-top:-40px;}
+.detail-grid{grid-template-columns:1fr;gap:36px;}
+.detail-grid.reverse .detail-media{order:-1;}
+.detail-media img{height:320px;}
+.amenity-grid{grid-template-columns:1fr;}
+.pkg-mini-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+.tiles-grid{grid-template-columns:1fr;}
+.tile{border-right:none;}
+}
+
+/* ---------- Cinematic full-bleed section (Juega Panorámica) ---------- */
+.cine-section{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;}
 .cine-media{position:absolute;inset:0;z-index:0;}
 .cine-media img{width:100%;height:100%;object-fit:cover;animation:cineKen 28s ease-in-out infinite alternate;}
 @keyframes cineKen{0%{transform:scale(1);}100%{transform:scale(1.09);}}
-.cine-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,10,6,0.72) 0%, rgba(8,10,6,0.46) 42%, rgba(8,10,6,0.14) 70%, rgba(8,10,6,0) 100%);}
-.cine-section.right .cine-media::after{background:linear-gradient(270deg, rgba(8,10,6,0.72) 0%, rgba(8,10,6,0.46) 42%, rgba(8,10,6,0.14) 70%, rgba(8,10,6,0) 100%);}
-.cine-content{position:relative;z-index:2;color:#fff;max-width:560px;padding:0 clamp(24px,5vw,64px);}
+.cine-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,10,6,0.78) 0%, rgba(8,10,6,0.52) 42%, rgba(8,10,6,0.16) 70%, rgba(8,10,6,0) 100%);}
+.cine-section.right .cine-media::after{background:linear-gradient(270deg, rgba(8,10,6,0.78) 0%, rgba(8,10,6,0.52) 42%, rgba(8,10,6,0.16) 70%, rgba(8,10,6,0) 100%);}
+.cine-content{position:relative;z-index:2;color:#fff;max-width:620px;padding:0 clamp(24px,5vw,64px);}
+.cine-section.first{padding-top:150px;}
 .cine-section.right .cine-content{margin-left:auto;}
 .cine-content .eyebrow{color:rgba(255,255,255,0.75);text-shadow:0 2px 14px rgba(0,0,0,0.65);}
 .cine-content h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(30px,4.4vw,52px);line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);margin-top:14px;}
 .cine-content p{font-size:15.5px;line-height:1.75;color:rgba(255,255,255,0.94);margin-top:18px;max-width:48ch;text-shadow:0 2px 18px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.55);}
+.cine-stats{display:flex;border-top:1px solid rgba(255,255,255,0.28);margin-top:28px;padding-top:22px;}
+.cine-stats div{flex:1;padding-right:14px;}
+.cine-stats b{display:block;font-family:var(--serif);font-style:italic;color:#fff;font-size:20px;text-shadow:0 2px 14px rgba(0,0,0,0.65);}
+.cine-stats span{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.72);text-shadow:0 1px 8px rgba(0,0,0,0.55);}
 .cine-content .text-link{color:#fff;margin-top:26px;display:inline-block;text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.cine-content .btn-primary, .cine-content .btn-outline{margin-top:26px;}
+.cine-content .amenity-grid{border-top:none;grid-template-columns:1fr;max-width:440px;}
+.cine-content .amenity-row{border-color:rgba(255,255,255,0.28);}
+.cine-content .amenity-row span:first-child{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.6);}
+.cine-content .amenity-row span:last-child{color:rgba(255,255,255,0.72);text-shadow:0 1px 10px rgba(0,0,0,0.55);}
+.cine-content .price-table{border-color:rgba(255,255,255,0.28);max-width:520px;}
+.cine-content .price-row{padding:11px 0;}
+.cine-content .price-row{border-color:rgba(255,255,255,0.2);}
+.cine-content .price-row .p-name{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.55);}
+.cine-content .price-row .p-meta{color:rgba(255,255,255,0.62);text-shadow:0 1px 8px rgba(0,0,0,0.5);}
+.cine-content .price-row .p-val{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.6);}
+.cine-content .price-note{color:rgba(255,255,255,0.6);text-shadow:0 1px 8px rgba(0,0,0,0.5);}
 @media (max-width:900px){
 .cine-section{min-height:auto;padding:90px 0;}
 .cine-content{max-width:100%;margin-left:0 !important;}
-.cine-media::after, .cine-section.right .cine-media::after{background:linear-gradient(180deg, rgba(8,10,6,0.4) 0%, rgba(8,10,6,0.75) 65%, rgba(8,10,6,0.9) 100%);}
+.cine-media::after, .cine-section.right .cine-media::after{background:linear-gradient(180deg, rgba(10,13,8,0.35) 0%, rgba(10,13,8,0.72) 65%, rgba(10,13,8,0.88) 100%);}
 }
 </style>
 </head>
 <body>
 
 <header id="siteHeader">
-<a href="#top" class="logo-mark">
-<img class="logo-base" src="assets/logo.png" alt="Panorámica Golf, Sports & Resort">
-<img class="logo-scrolled" src="assets/logo-white.png" alt="Panorámica Golf, Sports & Resort">
+<a href="index.html#top" class="logo-mark">
+<img src="assets/logo-white.png" alt="Panorámica Golf, Sports & Resort">
 </a>
 
 <nav class="primary-nav">
@@ -251,9 +395,9 @@ nav.primary-nav{display:none;}
 </div>
 </div>
 <span class="dot">·</span>
-<a href="#competiciones">Competiciones</a><span class="dot">·</span>
-<a href="#restaurante">Restaurante</a><span class="dot">·</span>
-<a href="#contacto">Contacto</a>
+<a href="index.html#competiciones">Competiciones</a><span class="dot">·</span>
+<a href="index.html#restaurante">Restaurante</a><span class="dot">·</span>
+<a href="index.html#contacto">Contacto</a>
 </nav>
 
 <div class="header-actions">
@@ -276,121 +420,111 @@ nav.primary-nav{display:none;}
 <a href="campo.html">El Campo</a>
 <a href="juega-panoramica.html">Juega Panorámica</a>
 <a href="socios.html">Socios</a>
-<a href="#competiciones">Competiciones</a>
-<a href="#restaurante">Restaurante</a>
-<a href="#contacto">Contacto</a>
+<a href="index.html#competiciones">Competiciones</a>
+<a href="index.html#restaurante">Restaurante</a>
+<a href="index.html#contacto">Contacto</a>
 <div class="m-lang">ES · EN · DE · CA · FR</div>
 </div>
-
-<section class="hero" id="top">
-<div class="hero-media">
-<video autoplay muted loop playsinline poster="assets/hero-aerial.jpg" id="heroVideo">
-<source src="assets/hero-video.mp4" type="video/mp4">
-</video>
-</div>
-<div class="hero-body">
-<h1 class="hero-title">Stay. Play.<br>Enjoy the Mediterranean.</h1>
-<p class="hero-sub">Panorámica Golf, Sports &amp; Resort — Sant Jordi, Castellón</p>
-<div class="hero-ctas">
-<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary">Reservar tee time</a>
-<a href="juega-panoramica.html" class="btn btn-outline">Ver paquetes</a>
-</div>
-</div>
-<div class="hero-stats">
-<span>18 hoyos</span><span class="sep">·</span>
-<span>Par 72</span><span class="sep">·</span>
-<span>Diseño Bernhard Langer</span><span class="sep">·</span>
-<span>Abierto todo el año</span>
-</div>
-</section>
-
-<section class="section" id="intro">
-<div class="intro-top">
-<div>
-<div class="eyebrow">Panorámica Golf · Castellón</div>
-<h2>Un destino mediterráneo abierto al viajero.</h2>
-</div>
-<p>18 hoyos par 72 diseñados por Bernhard Langer, alojamiento propio dentro del resort, restaurante abierto al patio y competiciones internacionales durante todo el año.</p>
-</div>
-<div class="intro-rule"></div>
-<div class="intro-stats">
-<div>
-<div class="eyebrow">El Campo</div>
-<div class="val">18 hoyos par 72</div>
-</div>
-<div>
-<div class="eyebrow">Alojamiento</div>
-<div class="val">Villas y apartamentos</div>
-</div>
-<div>
-<div class="eyebrow">Experiencias</div>
-<div class="val">Green fees &amp; torneos</div>
-</div>
-</div>
-</section>
-
-<section class="bleed light-text" id="campo">
-<div class="bleed-media"><img src="assets/el-campo.jpg" alt="El campo de Panorámica entre olivos y agua"></div>
-<div class="bleed-content">
-<div class="eyebrow">El Campo</div>
-<h2>Un club con historia. Un recorrido con futuro.</h2>
-<a href="campo.html" class="text-link">Ver ficha del campo</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="juega">
-<div class="bleed-media"><img src="assets/juega-highlight.jpg" alt="Green fees, escuela y packs de golf en Panorámica"></div>
-<div class="bleed-content">
-<div class="eyebrow">Juega Panorámica</div>
-<h2>Green fees, escuela, bonos y packs — a tu manera.</h2>
-<a href="juega-panoramica.html" class="text-link">Descubrir Juega Panorámica</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="socios-highlight">
-<div class="bleed-media"><img src="assets/alojamiento.jpg" alt="Socios de Panorámica Golf"></div>
-<div class="bleed-content">
-<div class="eyebrow">Socios</div>
-<h2>Disfruta del campo todo el año.</h2>
-<a href="socios.html" class="text-link">Ver ventajas de socio</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="competiciones">
-<div class="bleed-media"><img src="assets/hero-aerial.jpg" alt="Competiciones en Panorámica Golf"></div>
-<div class="bleed-content">
-<div class="eyebrow">Competiciones</div>
-<h2>La vida competitiva de Panorámica.</h2>
-<p style="color:rgba(255,255,255,0.85);margin-top:14px;font-size:14.5px;">Líder actual: M. Terraga · 628 pts — Próxima jornada: 14 de marzo, Orden del Mérito.</p>
-<a href="#contacto" class="text-link">Inscribirme en la próxima jornada</a>
-</div>
-</section>
-
-<section class="cine-section" id="restaurante">
-<div class="cine-media"><img src="assets/restaurante-interior.jpg" alt="Restaurant Gökotta en Panorámica Golf"></div>
+<section class="cine-section first" id="green-fees">
+<div class="cine-media"><img src="assets/hero-aerial.jpg" alt="Green fees en Panorámica"></div>
 <div class="cine-content">
-<div class="eyebrow">Restaurante &amp; Club</div>
-<h2>Cocina abierta al patio.</h2>
-<p>Restaurant Gökotta: terraza sobre el campo, patio con fuente y cocina mediterránea de temporada — el broche perfecto a tu ronda de golf.</p>
-<a href="#contacto" class="text-link">Reservar mesa</a>
+<div class="eyebrow">Green Fees</div>
+<h2>Tarifas y condiciones</h2>
+<p>Tarifas 2026. Consulta condiciones especiales para socios, grupos, varios días o packs con alojamiento y comidas.</p>
+<div class="price-table">
+<div class="price-row">
+<div><div class="p-name">Green Fee 18 Hoyos</div><div class="p-meta">Laboral · Festivo</div></div>
+<div class="p-val">65 € · 89 €</div>
+</div>
+<div class="price-row">
+<div><div class="p-name">Green Fee 9 Hoyos</div><div class="p-meta">Laboral · Festivo</div></div>
+<div class="p-val">45 € · 54 €</div>
+</div>
+<div class="price-row">
+<div><div class="p-name">Green Fee Junior</div><div class="p-meta">Menores de 18 años</div></div>
+<div class="p-val">40 €</div>
+</div>
+<div class="price-row">
+<div><div class="p-name">Green Fee invitados por socio</div><div class="p-meta">Máx. 10 al año</div></div>
+<div class="p-val">38 €</div>
+</div>
+<div class="price-row">
+<div><div class="p-name">Lunes Senior &amp; Ladies Day</div><div class="p-meta">Precio especial los lunes</div></div>
+<div class="p-val">45 €</div>
+</div>
+</div>
+<p class="price-note">Buggy desde 35 € (socios) / 45 € (no socios). Green Fee + Menú en Restaurant Gökotta desde 162 € (2 pax).</p>
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary">Reservar Tee Time</a>
 </div>
 </section>
 
-<section class="contact-wrap" id="contacto">
-<div class="contact-panel">
-<div class="eyebrow" style="color:rgba(255,255,255,0.6);">Reserva</div>
-<h2>Empieza tu escapada.</h2>
-<div class="contact-row">
-<div class="contact-details">
-<a href="mailto:golf@panoramicagrupo.com">golf@panoramicagrupo.com</a>
-<span class="sep">·</span>
-<a href="tel:+34964493072">+34 964 49 30 72</a>
-<span class="sep">·</span>
-<span>Urb. Panorámica s/n, 12320 Sant Jordi (Castellón)</span>
+<section class="cine-section right" id="escuela">
+<div class="cine-media"><img src="assets/hero-aerial.jpg" alt="Escuela de golf en Panorámica"></div>
+<div class="cine-content">
+<div class="eyebrow">Escuela de Golf</div>
+<h2>Aprender al ritmo del Mediterráneo</h2>
+<p>Clases individuales, clases particulares y cursos por niveles e iniciación para todas las edades, impartidas por profesionales del club.</p>
+<div class="amenity-grid">
+<div class="amenity-row"><span>Clases individuales</span><span>Todos los niveles</span></div>
+<div class="amenity-row"><span>Clases particulares</span><span>Bajo consulta</span></div>
+<div class="amenity-row"><span>Programas infantiles</span><span>Por temporada</span></div>
+<div class="amenity-row"><span>Cursos intensivos</span><span>Bajo consulta</span></div>
 </div>
-<a href="mailto:golf@panoramicagrupo.com" class="btn btn-primary">Solicitar paquete</a>
+<a href="index.html#contacto" class="btn btn-outline">Solicitar información</a>
+</div>
+</section>
+
+<section class="cine-section" id="bonos">
+<div class="cine-media"><img src="assets/el-campo.jpg" alt="Bonos y promociones de Panorámica"></div>
+<div class="cine-content">
+<div class="eyebrow">Bonos y Promociones</div>
+<h2>Ahorra jugando más de una vez</h2>
+<p>Bonos de green fees para quienes vuelven a menudo, y promociones de temporada que iremos publicando aquí. Consulta condiciones vigentes.</p>
+<a href="index.html#contacto" class="btn btn-outline">Consultar bonos activos</a>
+</div>
+</section>
+
+<section class="detail-section" id="packs">
+<div class="eyebrow">Packs de Golf</div>
+<h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;">Estancias diseñadas para jugar sin prisas</h2>
+<div class="pkg-mini-grid">
+<div class="pkg-mini">
+<img src="assets/pkg-escapada.jpg" alt="Escapada Mediterránea">
+<h3>Escapada Mediterránea</h3>
+<div class="meta">2 noches · 2 green fees</div>
+<div class="price">Desde 245 €</div>
+</div>
+<div class="pkg-mini">
+<img src="assets/pkg2.jpg" alt="Semana en villa">
+<h3>Semana en villa</h3>
+<div class="meta">7 noches · green fees</div>
+<div class="price">Desde 890 €</div>
+</div>
+<div class="pkg-mini">
+<img src="assets/pkg3.jpg" alt="Weekend competición">
+<h3>Weekend competición</h3>
+<div class="meta">3 noches · torneo</div>
+<div class="price">Desde 385 €</div>
 </div>
 </div>
+</section>
+
+<section class="detail-section" id="alojamiento" style="background:var(--dark-panel);color:#fff;">
+<div class="detail-grid reverse">
+<div class="detail-text">
+<div class="eyebrow" style="color:rgba(255,255,255,0.6);">Alojamiento + Golf</div>
+<h2 style="color:#fff;">Tu estancia y tus green fees, en un solo pack</h2>
+<p style="color:rgba(255,255,255,0.72);">Villas y apartamentos con vistas al green, combinados con green fees, para quienes quieren venir varios días y jugar sin prisas.</p>
+<a href="mailto:golf@panoramicagrupo.com" class="btn btn-primary" style="margin-top:26px;">Solicitar propuesta</a>
+</div>
+<div class="detail-media"><img src="assets/alojamiento.jpg" alt="Alojamiento y golf en Panorámica"></div>
+</div>
+</section>
+
+<section class="page-cta">
+<div class="eyebrow">Reservar</div>
+<h2>Elige cómo quieres jugar Panorámica.</h2>
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary">Reservar Tee Time</a>
 </section>
 
 <footer>
@@ -448,5 +582,3 @@ document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('ope
 });
 });
 </script>
-</body>
-</html>

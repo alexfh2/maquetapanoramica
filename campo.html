@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Campo — Panorámica Golf, Sports &amp; Resort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--cream:#F3EEE3;
+--ink:#22261E;
+--ink-soft:#454A3E;
+--dark-panel:#1B2318;
+--terracotta:#B97452;
+--line: rgba(34,38,30,0.16);
+--line-on-dark: rgba(255,255,255,0.18);
+--serif: 'Fraunces', serif;
+--sans: 'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+::selection{background:var(--terracotta);color:#fff;}
+.eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;color:var(--terracotta);}
+header{
+position:fixed;top:0;left:0;right:0;z-index:100;
+display:flex;align-items:center;justify-content:space-between;gap:20px;
+padding:18px clamp(20px,4vw,48px);
+border-bottom:1px solid var(--line-on-dark);
+transition:background .4s ease, padding .4s ease, border-color .4s ease;
+}
+header.solid{background:rgba(27,35,24,0.94);backdrop-filter:blur(10px);padding:12px clamp(20px,4vw,48px);}
+.logo-mark{position:relative;display:inline-block;flex:none;height:76px;min-width:110px;transition:height .3s ease;}
+header.solid .logo-mark{height:52px;}
+.logo-mark img{position:absolute;top:0;left:0;height:76px;width:auto;max-width:none;transition:opacity .5s ease, height .3s ease;}
+header.solid .logo-mark img{height:52px;}
+
+nav.primary-nav{display:flex;align-items:center;gap:clamp(8px,1vw,16px);flex:none;}
+nav.primary-nav a{font-size:13px;letter-spacing:0.09em;text-transform:uppercase;color:#fff;font-weight:500;white-space:nowrap;opacity:0.92;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .2s ease,opacity .2s ease;}
+nav.primary-nav a:hover{opacity:1;border-color:var(--terracotta);}
+nav.primary-nav .dot{color:rgba(255,255,255,0.4);font-size:10px;}
+.nav-item{position:relative;}
+.nav-item.has-dropdown > a{display:inline-flex;align-items:center;gap:6px;}
+.nav-item.has-dropdown > a .caret{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.7;transition:transform .25s ease;}
+.nav-item.open > a .caret{transform:rotate(225deg) translateY(1px);}
+.nav-dropdown{
+position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);
+margin-top:18px;min-width:220px;
+background:rgba(27,35,24,0.62);
+backdrop-filter:blur(16px) saturate(140%);
+-webkit-backdrop-filter:blur(16px) saturate(140%);
+border-top:1px solid rgba(255,255,255,0.55);
+box-shadow:0 20px 44px -18px rgba(0,0,0,0.55);
+border-radius:1px;
+padding:14px 6px;
+display:flex;flex-direction:column;
+opacity:0;visibility:hidden;pointer-events:none;
+transition:opacity .3s ease, transform .3s ease, visibility .3s;
+z-index:60;
+}
+.nav-item.open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dropdown a{
+text-shadow:0 1px 6px rgba(0,0,0,0.4);
+font-family:var(--sans);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;
+color:#fff;opacity:.82;white-space:nowrap;padding:11px 18px;border-bottom:none;
+transition:opacity .2s ease, padding-left .2s ease;
+}
+.nav-dropdown a:hover{opacity:1;padding-left:24px;}
+.lang-select{display:flex;gap:7px;font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.65);flex:none;white-space:nowrap;}
+.lang-select button{color:inherit;font-size:11px;}
+.lang-select button.active{color:#fff;font-weight:600;}
+.header-actions{display:flex;align-items:center;gap:12px;flex:none;}
+.btn-compact{padding:9px 15px;font-size:10px;letter-spacing:0.08em;white-space:nowrap;}
+.header-actions .nav-item .nav-dropdown{left:auto;right:0;transform:translateY(6px);min-width:90px;}
+.header-actions .nav-item.open .nav-dropdown{transform:translateY(0);}
+.header-actions .nav-item .nav-dropdown a{text-align:center;}
+.lang-current{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#fff;font-weight:500;opacity:.92;}
+.lang-current:hover{opacity:1;}
+.lang-current .caret{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.7;margin-left:6px;display:inline-block;transition:transform .25s ease;}
+.nav-item.open .lang-current .caret{transform:rotate(225deg) translateY(1px);}
+.burger{display:none;flex-direction:column;gap:5px;width:24px;flex:none;}
+.burger span{height:1px;background:#fff;width:100%;}
+.mobile-nav{position:fixed;inset:0;z-index:200;background:var(--dark-panel);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:40px;transform:translateY(-100%);transition:transform .4s ease;}
+.mobile-nav.open{transform:translateY(0);}
+.mobile-nav a{font-family:var(--serif);font-size:26px;}
+.mobile-nav .close{position:absolute;top:22px;right:22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;}
+.mobile-nav .m-lang{margin-top:10px;font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,0.6);display:flex;gap:10px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;transition:opacity .2s ease, background .2s ease;}
+.btn-primary{background:var(--terracotta);color:#fff;}
+.btn-primary:hover{opacity:0.88;}
+.btn-outline{border:1px solid rgba(255,255,255,0.45);color:#fff;}
+.btn-outline:hover{background:rgba(255,255,255,0.08);}
+.text-link{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;border-bottom:1px solid currentColor;padding-bottom:3px;display:inline-block;}
+.hero{position:relative;height:100vh;height:100svh;min-height:660px;display:flex;flex-direction:column;overflow:hidden;}
+.hero-media{position:absolute;inset:0;z-index:0;}
+.hero-media img, .hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 55%;}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.46) 0%, rgba(15,17,12,0.12) 26%, rgba(15,17,12,0.22) 50%, rgba(15,17,12,0.16) 62%, rgba(15,17,12,0.55) 100%);}
+.hero-media::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 62% 46% at 50% 52%, rgba(10,13,8,0.5) 0%, rgba(10,13,8,0.28) 45%, rgba(10,13,8,0) 78%);}
+.hero-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:120px 24px 40px;}
+h1.hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(42px,7vw,86px);line-height:1.08;letter-spacing:-0.005em;text-shadow:0 2px 24px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.25);}
+.hero-sub{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(14px,1.4vw,18px);color:rgba(255,255,255,0.9);margin-top:22px;text-shadow:0 1px 12px rgba(0,0,0,0.35);}
+.hero-ctas{display:flex;gap:12px;margin-top:34px;}
+.hero-stats{position:relative;z-index:2;border-top:1px solid var(--line-on-dark);padding:18px 24px;text-align:center;}
+.hero-stats span{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);}
+.hero-stats .sep{color:rgba(255,255,255,0.4);margin:0 12px;}
+.section{padding:clamp(64px,9vw,120px) clamp(20px,5vw,64px);}
+.intro-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.intro-top h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);line-height:1.15;margin-top:12px;max-width:480px;}
+.intro-top p{font-size:15px;line-height:1.75;color:var(--ink-soft);max-width:460px;padding-top:6px;}
+.intro-rule{border-top:1px solid var(--line);margin:44px 0 0;}
+.intro-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding-top:34px;}
+.intro-stats .eyebrow{margin-bottom:10px;}
+.intro-stats .val{font-family:var(--serif);font-size:22px;}
+.bleed{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;}
+.bleed-media{position:absolute;inset:0;z-index:0;}
+.bleed-media img{width:100%;height:100%;object-fit:cover;}
+.bleed.dark-text .bleed-media::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 45%);}
+.bleed.light-text .bleed-media::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(10,14,8,0.72) 0%, rgba(10,14,8,0.05) 55%);}
+.bleed-content{position:relative;z-index:2;padding:clamp(28px,5vw,56px) clamp(20px,5vw,64px);max-width:640px;}
+.bleed.dark-text .bleed-content{color:var(--ink);}
+.bleed.light-text .bleed-content{color:#fff;}
+.bleed-content h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,50px);line-height:1.12;margin-top:10px;}
+.bleed-content .text-link{margin-top:20px;}
+.bleed.dark-text .text-link{color:var(--ink);}
+.bleed.light-text .text-link{color:#fff;}
+.bleed.dark-text .eyebrow{color:var(--ink-soft);letter-spacing:0.14em;}
+.bleed.light-text .eyebrow{color:rgba(255,255,255,0.75);}
+.pkg-head{margin-bottom:44px;}
+.pkg-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,44px);margin-top:10px;}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;}
+.pkg-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.pkg-card h3{font-family:var(--serif);font-weight:400;font-size:22px;margin-top:20px;}
+.pkg-card .meta{font-size:13.5px;color:var(--ink-soft);margin-top:8px;}
+.pkg-card .price{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-top:10px;}
+.pkg-rule{border-top:1px solid var(--line);margin-top:48px;}
+.comp-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,44px);margin-top:10px;max-width:560px;}
+.comp-rule{border-top:1px solid var(--line);margin:38px 0;}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.comp-col-title{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px;}
+.agenda-row{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+.agenda-row:first-of-type{border-top:1px solid var(--line);}
+.agenda-date{color:var(--terracotta);font-weight:600;font-size:12px;letter-spacing:0.04em;width:60px;flex:none;}
+.agenda-name{font-family:var(--serif);font-size:16.5px;flex:1;}
+.agenda-time{color:var(--ink-soft);font-size:12.5px;}
+.rank-row{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+.rank-row:first-of-type{border-top:1px solid var(--line);}
+.rank-num{font-family:var(--serif);color:var(--terracotta);font-size:15px;width:20px;}
+.rank-name{flex:1;}
+.rank-pts{color:var(--ink-soft);font-size:12.5px;}
+.resto-grid{display:grid;grid-template-columns:0.85fr 1fr;gap:clamp(30px,6vw,80px);align-items:center;}
+.resto-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.14;margin-top:12px;}
+.resto-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:20px;max-width:400px;}
+.resto-text .text-link{margin-top:26px;color:var(--ink);}
+.resto-media img{width:100%;aspect-ratio:14/9;object-fit:cover;}
+.contact-wrap{padding:0 clamp(20px,5vw,64px) 0;}
+.contact-panel{background:var(--dark-panel);color:#fff;padding:clamp(40px,6vw,64px);}
+.contact-panel h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,44px);margin-top:12px;}
+.contact-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:44px;}
+.contact-details{font-size:14.5px;color:rgba(255,255,255,0.85);}
+.contact-details a{border-bottom:1px solid rgba(255,255,255,0.3);}
+.contact-details .sep{margin:0 10px;color:rgba(255,255,255,0.4);}
+footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:26px clamp(20px,5vw,64px);font-size:12px;color:var(--ink-soft);}
+footer .flangs{display:flex;gap:10px;}
+@media (max-width:1320px){
+nav.primary-nav{display:none;}
+.lang-select{display:none;}
+.header-actions .lang-dropdown{display:none;}
+.burger{display:flex;}
+.intro-top{grid-template-columns:1fr;gap:20px;}
+.intro-stats{grid-template-columns:1fr 1fr;row-gap:24px;}
+.pkg-grid{grid-template-columns:1fr;gap:40px;}
+.comp-grid{grid-template-columns:1fr;gap:40px;}
+.resto-grid{grid-template-columns:1fr;}
+.resto-media{order:-1;}
+.hero-ctas{flex-direction:column;width:100%;max-width:300px;}
+.contact-row{flex-direction:column;align-items:flex-start;}
+}
+@media (max-width:560px){
+.hero-stats{font-size:10px;}
+.hero-stats span{display:inline-block;}
+.intro-stats{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+/* ============ CAMPO — página dedicada ============ */
+.page-hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+.page-hero-media{position:absolute;inset:0;z-index:0;}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;animation:campoKen 24s ease-in-out infinite alternate;}
+@keyframes campoKen{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.page-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.42) 0%, rgba(15,17,12,0.08) 30%, rgba(15,17,12,0.2) 55%, rgba(15,17,12,0.78) 100%);}
+.page-hero-body{position:relative;z-index:2;color:#fff;padding:120px clamp(20px,5vw,64px) 56px;max-width:760px;}
+.breadcrumb{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+.breadcrumb a{border-bottom:1px solid rgba(255,255,255,0.35);}
+.page-hero-body h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(38px,5.4vw,66px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-top:14px;}
+.page-hero-body .hero-sub{margin-top:18px;max-width:52ch;}
+
+.quick-tiles{margin-top:-64px;position:relative;z-index:4;padding:0 clamp(20px,5vw,64px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cream);border:1px solid var(--line);}
+.tile{padding:30px 22px 26px;border-right:1px solid var(--line);transition:background .2s ease;}
+.tile:last-child{border-right:none;}
+.tile:hover{background:rgba(185,116,82,0.06);}
+.tile-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:13px;display:block;margin-bottom:12px;}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:8px;line-height:1.2;}
+.tile p{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;min-height:30px;}
+.tile .text-link{font-size:10px;}
+
+.detail-section{padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);}
+.detail-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center;}
+
+/* ---------- Cinematic full-bleed section (El Campo) ---------- */
+.cine-section{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;}
+.cine-media{position:absolute;inset:0;z-index:0;}
+.cine-media img{width:100%;height:100%;object-fit:cover;animation:cineKen 28s ease-in-out infinite alternate;}
+@keyframes cineKen{0%{transform:scale(1);}100%{transform:scale(1.09);}}
+.cine-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,13,8,0.6) 0%, rgba(10,13,8,0.36) 42%, rgba(10,13,8,0.1) 70%, rgba(10,13,8,0) 100%);}
+.cine-section.right .cine-media::after{background:linear-gradient(270deg, rgba(10,13,8,0.6) 0%, rgba(10,13,8,0.36) 42%, rgba(10,13,8,0.1) 70%, rgba(10,13,8,0) 100%);}
+.cine-content{position:relative;z-index:2;color:#fff;max-width:540px;padding:0 clamp(24px,5vw,64px);}
+.cine-section.first{padding-top:150px;}
+.cine-section.right .cine-content{margin-left:auto;}
+.cine-content .eyebrow{color:rgba(255,255,255,0.75);text-shadow:0 2px 14px rgba(0,0,0,0.65);}
+.cine-content h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(30px,4.4vw,52px);line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);margin-top:14px;}
+.cine-content p{font-size:15.5px;line-height:1.75;color:rgba(255,255,255,0.94);margin-top:18px;max-width:48ch;text-shadow:0 2px 18px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.55);}
+.cine-stats{display:flex;border-top:1px solid rgba(255,255,255,0.28);margin-top:28px;padding-top:22px;}
+.cine-stats div{flex:1;padding-right:14px;}
+.cine-stats b{display:block;font-family:var(--serif);font-style:italic;color:#fff;font-size:20px;text-shadow:0 2px 14px rgba(0,0,0,0.65);}
+.cine-stats span{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.72);text-shadow:0 1px 8px rgba(0,0,0,0.55);}
+.cine-content .text-link{color:#fff;margin-top:26px;display:inline-block;text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.cine-content .amenity-grid{border-top:none;grid-template-columns:1fr;max-width:440px;}
+.cine-content .amenity-row{border-color:rgba(255,255,255,0.28);}
+.cine-content .amenity-row span:first-child{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.6);}
+.cine-content .amenity-row span:last-child{color:rgba(255,255,255,0.72);text-shadow:0 1px 10px rgba(0,0,0,0.55);}
+@media (max-width:900px){
+.cine-section{min-height:auto;padding:90px 0;}
+.cine-content{max-width:100%;margin-left:0 !important;}
+.cine-media::after, .cine-section.right .cine-media::after{background:linear-gradient(180deg, rgba(10,13,8,0.35) 0%, rgba(10,13,8,0.72) 65%, rgba(10,13,8,0.88) 100%);}
+}
+.detail-grid.reverse .detail-media{order:2;}
+.detail-media img{width:100%;height:460px;object-fit:cover;}
+.detail-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;line-height:1.15;}
+.detail-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:18px;max-width:46ch;}
+.detail-stats{display:flex;border-top:1px solid var(--line);margin-top:30px;padding-top:24px;}
+.detail-stats div{flex:1;padding-right:14px;}
+.detail-stats b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--terracotta);}
+.detail-stats span{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+.detail-text .text-link, .detail-text .btn{margin-top:28px;}
+
+.price-table{border-top:1px solid var(--line);margin-top:8px;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);}
+.price-row .p-name{font-family:var(--serif);font-size:17px;}
+.price-row .p-meta{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+.price-row .p-val{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:19px;white-space:nowrap;}
+.price-note{font-size:12.5px;color:var(--ink-soft);margin-top:20px;}
+
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+.amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;min-width:0;gap:12px;}
+.amenity-row span{min-width:0;}
+.amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
+
+/* ---------- Hoyo a Hoyo accordion ---------- */
+.hole-accordion{border-top:1px solid var(--line);margin-top:44px;}
+.hoyo-panel-wrap{position:relative;z-index:5;margin-top:-110px;padding:0 clamp(20px,5vw,64px);}
+.hoyo-panel{background:var(--cream);border:1px solid var(--line);box-shadow:0 40px 70px -24px rgba(0,0,0,0.3);max-width:1040px;margin:0 auto;padding:48px clamp(24px,5vw,60px) 54px;}
+.facility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin:28px 0 32px;}
+.facility-card img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:14px;}
+.facility-card h3{font-family:var(--serif);font-weight:400;font-size:16.5px;margin-bottom:8px;}
+.facility-card p{font-size:12.5px;line-height:1.6;color:var(--ink-soft);}
+@media (max-width:900px){
+.facility-grid{grid-template-columns:1fr 1fr;gap:20px;}
+}
+@media (max-width:560px){
+.facility-grid{grid-template-columns:1fr;}
+}
+@media (max-width:900px){
+.hoyo-panel-wrap{margin-top:0;}
+.hoyo-panel{box-shadow:none;border-left:none;border-right:none;padding:40px 0;}
+}
+.hole-item{border-bottom:1px solid var(--line);}
+.hole-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 2px;cursor:pointer;list-style:none;}
+.hole-item summary::-webkit-details-marker{display:none;}
+.hole-left{display:flex;align-items:baseline;gap:16px;flex:1;min-width:0;}
+.hole-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:19px;flex:none;}
+.hole-title{font-family:var(--serif);font-size:16.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hole-meta{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;flex:none;}
+.hole-plus{font-size:20px;color:var(--ink-soft);flex:none;transition:transform .25s ease;line-height:1;}
+.hole-item[open] .hole-plus{transform:rotate(45deg);}
+.hole-body{padding:0 2px 26px;max-width:70ch;}
+.hole-body p{font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:14px;}
+.hole-tip{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--ink);border-left:2px solid var(--terracotta);padding-left:14px;margin-bottom:14px;}
+.hole-diff{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta);}
+@media (max-width:600px){
+.hole-title{white-space:normal;}
+.hole-meta{font-size:10.5px;}
+}
+
+.campo-cta{background:var(--dark-panel);color:#fff;padding:clamp(50px,7vw,80px) clamp(20px,5vw,64px);text-align:center;}
+.campo-cta .eyebrow{color:rgba(255,255,255,0.6);}
+.campo-cta h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(28px,3.8vw,42px);margin:14px auto 26px;max-width:22ch;}
+
+@media (max-width:980px){
+.tiles-grid{grid-template-columns:1fr 1fr;}
+.tile{border-bottom:1px solid var(--line);}
+.tile:nth-child(2n){border-right:none;}
+.quick-tiles{margin-top:-40px;}
+.detail-grid{grid-template-columns:1fr;gap:36px;}
+.detail-grid.reverse .detail-media{order:-1;}
+.detail-media img{height:320px;}
+.amenity-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+.tiles-grid{grid-template-columns:1fr;}
+.tile{border-right:none;}
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+<a href="index.html#top" class="logo-mark">
+<img src="assets/logo-white.png" alt="Panorámica Golf, Sports & Resort">
+</a>
+
+<nav class="primary-nav">
+<div class="nav-item has-dropdown">
+<a href="campo.html">El Campo <span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="campo.html#historia">Historia del Club</a>
+<a href="campo.html#diseno">Diseño de Bernhard Langer</a>
+<a href="campo.html#18-hoyos">Recorrido 18 Hoyos</a>
+<a href="campo.html#instalaciones">Instalaciones</a>
+</div>
+</div>
+<span class="dot">·</span>
+<div class="nav-item has-dropdown">
+<a href="juega-panoramica.html">Juega Panorámica <span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="juega-panoramica.html#green-fees">Green Fees</a>
+<a href="juega-panoramica.html#escuela">Escuela de Golf</a>
+<a href="juega-panoramica.html#bonos">Bonos y Promociones</a>
+<a href="juega-panoramica.html#packs">Packs de Golf</a>
+<a href="juega-panoramica.html#alojamiento">Alojamiento + Golf</a>
+</div>
+</div>
+<span class="dot">·</span>
+<div class="nav-item has-dropdown">
+<a href="socios.html">Socios <span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="socios.html#hazte-socio">Hazte Socio</a>
+<a href="socios.html#ventajas">Ventajas</a>
+<a href="socios.html#modalidades">Modalidades</a>
+<a href="socios.html#noticias">Noticias</a>
+</div>
+</div>
+<span class="dot">·</span>
+<a href="index.html#competiciones">Competiciones</a><span class="dot">·</span>
+<a href="index.html#restaurante">Restaurante</a><span class="dot">·</span>
+<a href="index.html#contacto">Contacto</a>
+</nav>
+
+<div class="header-actions">
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary btn-compact">Reservar Tee Time</a>
+<div class="nav-item has-dropdown lang-dropdown">
+<a href="#" class="lang-current" id="langCurrent"><span class="lang-code">ES</span><span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="#" class="lang-option" data-lang="EN">EN</a>
+<a href="#" class="lang-option" data-lang="DE">DE</a>
+<a href="#" class="lang-option" data-lang="CA">CA</a>
+<a href="#" class="lang-option" data-lang="FR">FR</a>
+</div>
+</div>
+</div>
+<button class="burger" id="burgerBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+<button class="close" id="closeNav">Cerrar ✕</button>
+<a href="campo.html">El Campo</a>
+<a href="juega-panoramica.html">Juega Panorámica</a>
+<a href="socios.html">Socios</a>
+<a href="index.html#competiciones">Competiciones</a>
+<a href="index.html#restaurante">Restaurante</a>
+<a href="index.html#contacto">Contacto</a>
+<div class="m-lang">ES · EN · DE · CA · FR</div>
+</div>
+<section class="cine-section first" id="historia">
+<div class="cine-media"><img src="assets/campo-historia.jpg" alt="Historia del club de Panorámica Golf"></div>
+<div class="cine-content">
+<div class="eyebrow">Historia del Club</div>
+<h2>Tres décadas mirando al Mediterráneo</h2>
+<p>Panorámica nació en 1995 en Sant Jordi, dentro de una finca mediterránea de olivos y algarrobos, pensada desde el origen para jugadores locales e internacionales. Desde entonces se ha consolidado como uno de los grandes referentes del golf en la Comunidad Valenciana, acogiendo competiciones nacionales y pruebas de la Real Federación Española de Golf.</p>
+<p>En 2026, Panorámica celebra su XXXI aniversario iniciando una nueva etapa: más vida social, mejores servicios, más competición y una escuela reforzada.</p>
+<div class="cine-stats">
+<div><b>1995</b><span>Inauguración</span></div>
+<div><b>XXXI</b><span>Aniversario</span></div>
+<div><b>Sant Jordi</b><span>Castellón</span></div>
+</div>
+<a href="#diseno" class="text-link">Conocer el diseño</a>
+</div>
+</section>
+
+<section class="cine-section" id="diseno">
+<div class="cine-media"><img src="assets/campo-diseno.jpg" alt="Diseño de Bernhard Langer en Panorámica"></div>
+<div class="cine-content">
+<div class="eyebrow">Diseño</div>
+<h2>El único campo de Bernhard Langer en España</h2>
+<p>Panorámica es el único recorrido diseñado en España por Bernhard Langer, una de las grandes leyendas del golf europeo. Su filosofía prioriza la estrategia sobre la potencia: cada hoyo ofrece varias alternativas desde el tee, premiando la colocación y la cabeza por encima de la fuerza — con calles que respetan la orografía y el paisaje mediterráneo.</p>
+<div class="cine-stats">
+<div><b>2×</b><span>Masters de Augusta</span></div>
+<div><b>40+</b><span>Victorias DP World Tour</span></div>
+<div><b>Nº1</b><span>Ranking Mundial (1986)</span></div>
+</div>
+<a href="#18-hoyos" class="text-link">Ver el recorrido</a>
+</div>
+</section>
+
+<section class="cine-section" id="18-hoyos" style="padding-bottom:140px;">
+<div class="cine-media"><img src="assets/campo-recorrido.jpg" alt="Vista aérea del recorrido de 18 hoyos de Panorámica"></div>
+<div class="cine-content">
+<div class="eyebrow">Recorrido</div>
+<h2>Un par 72 entre olivos y agua</h2>
+<p>18 hoyos con lagos, olivos centenarios y amplitud de calles, pensados para jugadores de todos los niveles y abiertos todo el año.</p>
+<div class="cine-stats">
+<div><b>18</b><span>Hoyos</span></div>
+<div><b>Par 72</b><span>Recorrido</span></div>
+<div><b>B. Langer</b><span>Diseño</span></div>
+<div><b>365</b><span>Días abierto</span></div>
+</div>
+<a href="juega-panoramica.html#green-fees" class="text-link">Ver Green Fees</a>
+</div>
+</section>
+
+<div class="hoyo-panel-wrap" id="hoyo-a-hoyo">
+<div class="hoyo-panel">
+<div class="eyebrow">Hoyo a hoyo</div>
+<h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,32px);margin-top:10px;margin-bottom:8px;">Descubre los 18 hoyos</h2>
+<p style="font-size:14px;color:var(--ink-soft);max-width:60ch;margin-bottom:8px;">Toca cada hoyo para ver su estrategia y el consejo del profesional.</p>
+<div class="hole-accordion">
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">01</span><span class="hole-title">La bienvenida perfecta</span></span>
+<span class="hole-meta">Par 4 · Hcp 10</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Calle amplia que invita a empezar con confianza, pero el ángulo derecho ofrece la mejor entrada a un green protegido por bunkers a ambos lados.</p>
+<div class="hole-tip">Juega al centro del green y no busques banderas en los extremos.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">02</span><span class="hole-title">El primer par 5</span></span>
+<span class="hole-meta">Par 5 · Hcp 14</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Primer par 5 del recorrido, con un lago que acompaña la salida sin entrar realmente en juego. El green, elevado y con bunkers, premia la paciencia.</p>
+<div class="hole-tip">Tres golpes sólidos ganan más que un golpe heroico.</div>
+<div class="hole-diff">Dificultad ★★★☆☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">03</span><span class="hole-title">Precisión absoluta</span></span>
+<span class="hole-meta">Par 3 · Hcp 18</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>El hoyo más corto, no el más fácil: un green bien protegido exige control total de dirección y distancia.</p>
+<div class="hole-tip">Mejor pasarse de club que quedarse corto en los bunkers.</div>
+<div class="hole-diff">Dificultad ★★☆☆☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">04</span><span class="hole-title">El gran examen</span></span>
+<span class="hole-meta">Par 5 · Hcp 4</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Más de 500 metros de pura estrategia, con un green muy protegido que castiga cualquier exceso de ambición.</p>
+<div class="hole-tip">No es un hoyo para héroes, es un hoyo para estrategas.</div>
+<div class="hole-diff">Dificultad ★★★★★</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">05</span><span class="hole-title">La isla verde</span></span>
+<span class="hole-meta">Par 3 · Hcp 16</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>El hoyo más fotografiado del campo: el agua rodea casi todo el green en uno de los golpes más memorables del recorrido.</p>
+<div class="hole-tip">No mires el agua, mira el objetivo.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">06</span><span class="hole-title">Estrategia antes que potencia</span></span>
+<span class="hole-meta">Par 4 · Hcp 6</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>La colocación desde el tee lo es todo; el agua a la derecha del green empieza a jugar con la cabeza del jugador.</p>
+<div class="hole-tip">Jugar desde la calle importa más que jugar desde cerca.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">07</span><span class="hole-title">Máxima precisión</span></span>
+<span class="hole-meta">Par 3 · Hcp 12</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Agua a ambos lados de un green estrecho y técnico, con posiciones de bandera muy distintas entre sí.</p>
+<div class="hole-tip">Un palo más y un swing controlado, mejor que arriesgar.</div>
+<div class="hole-diff">Dificultad ★★★☆☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">08</span><span class="hole-title">La recompensa a la paciencia</span></span>
+<span class="hole-meta">Par 4 · Hcp 8</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>La calle invita al driver, pero los bunkers exigen elegir bien la línea antes de atacar un green muy defendido.</p>
+<div class="hole-tip">Los errores casi siempre nacen en el tee, no en la aproximación.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">09</span><span class="hole-title">Final de ida memorable</span></span>
+<span class="hole-meta">Par 5 · Hcp 2</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Cierre de la primera vuelta, largo y exigente, con un green muy protegido tras un hoyo que ya ha puesto a prueba al jugador.</p>
+<div class="hole-tip">Divide el hoyo en tres golpes sólidos, no en uno heroico.</div>
+<div class="hole-diff">Dificultad ★★★★★</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">10</span><span class="hole-title">Sin concesiones</span></span>
+<span class="hole-meta">Par 4 · Hcp 1</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>El hoyo más difícil del campo según su hándicap: longitud y un green muy bien defendido exigen dos golpes perfectos.</p>
+<div class="hole-tip">Aceptar el par como un gran resultado ayuda a jugarlo con cabeza.</div>
+<div class="hole-diff">Dificultad ★★★★★</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">11</span><span class="hole-title">Riesgo calculado</span></span>
+<span class="hole-meta">Par 5 · Hcp 5</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Un lago acompaña gran parte del hoyo, obligando a decidir entre atacar o colocarse antes de un green elevado y protegido.</p>
+<div class="hole-tip">Antes de sacar el palo, pregúntate si merece la pena el riesgo.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">12</span><span class="hole-title">Belleza sobre el agua</span></span>
+<span class="hole-meta">Par 3 · Hcp 11</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Uno de los pares 3 más bellos del recorrido: el agua domina la escena y una isla ajardinada corona el green.</p>
+<div class="hole-tip">Elige el palo con convicción y confía en el swing.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">13</span><span class="hole-title">Precisión y decisión</span></span>
+<span class="hole-meta">Par 4 · Hcp 17</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Corto pero técnico: un gran lago protege el lado derecho del green y exige control total de la distancia.</p>
+<div class="hole-tip">El birdie llega por cabeza, no por potencia.</div>
+<div class="hole-diff">Dificultad ★★★☆☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">14</span><span class="hole-title">Elegancia hasta el green</span></span>
+<span class="hole-meta">Par 4 · Hcp 7</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>La colocación desde el tee condiciona todo: la entrada al green se estrecha y premia a quien ha jugado bien el primer golpe.</p>
+<div class="hole-tip">No merece la pena arriesgar por unos metros de más.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">15</span><span class="hole-title">La recta final exige</span></span>
+<span class="hole-meta">Par 4 · Hcp 3</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Un par 4 largo y estrecho, enmarcado por árboles, donde suelen decidirse las clasificaciones en competición.</p>
+<div class="hole-tip">La paciencia vuelve a ser la mejor arma.</div>
+<div class="hole-diff">Dificultad ★★★★★</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">16</span><span class="hole-title">Un último par 3</span></span>
+<span class="hole-meta">Par 3 · Hcp 15</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Green con plataformas y pendientes que complican el putt si la bola no cae en la zona correcta; el viento suele hacerse notar.</p>
+<div class="hole-tip">Trátalo como cualquier otro golpe, sin dejarte llevar por el final de la vuelta.</div>
+<div class="hole-diff">Dificultad ★★★☆☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">17</span><span class="hole-title">Todo puede cambiar</span></span>
+<span class="hole-meta">Par 4 · Hcp 13</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>Dos lagos acompañan uno de los hoyos más bonitos del campo, con un green situado muy cerca del agua.</p>
+<div class="hole-tip">Aquí los torneos no se ganan, pero sí se pueden perder.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+<details class="hole-item">
+<summary>
+<span class="hole-left"><span class="hole-num">18</span><span class="hole-title">Un cierre de campeonato</span></span>
+<span class="hole-meta">Par 5 · Hcp 9</span>
+<span class="hole-plus">+</span>
+</summary>
+<div class="hole-body">
+<p>El regreso a la Casa Club, con un green muy protegido que exige concentración hasta el último putt.</p>
+<div class="hole-tip">Mantén la calma: muchas vueltas se deciden aquí.</div>
+<div class="hole-diff">Dificultad ★★★★☆</div>
+</div>
+</details>
+</div>
+
+</div>
+</div>
+
+<section class="cine-section right" id="instalaciones" style="padding-bottom:140px;">
+<div class="cine-media"><img src="assets/campo-instalaciones.jpg" alt="Zona de prácticas de Panorámica Golf"></div>
+<div class="cine-content">
+<div class="eyebrow">Instalaciones</div>
+<h2>Mucho más que un campo de golf</h2>
+<p>Una de las mayores áreas de práctica de Europa: todo lo necesario para entrenar cada faceta del juego, durante todo el año gracias al clima de la Costa del Azahar. Aquí no solo se viene a jugar — se viene a entrenar, aprender y mejorar.</p>
+<div class="cine-stats">
+<div><b>12</b><span>Meses de temporada</span></div>
+<div><b>4</b><span>Zonas de entrenamiento</span></div>
+<div><b>Par 3</b><span>Recorrido propio</span></div>
+</div>
+</div>
+</section>
+
+<div class="hoyo-panel-wrap">
+<div class="hoyo-panel">
+<div class="eyebrow">Zona de prácticas</div>
+<h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,32px);margin-top:10px;margin-bottom:10px;">Todo lo que necesitas para mejorar tu juego</h2>
+<p style="font-size:14px;color:var(--ink-soft);max-width:70ch;margin-bottom:8px;">Diseñada para reproducir situaciones reales de juego, elegida por academias, escuelas y equipos nacionales e internacionales para sus concentraciones.</p>
+<div class="facility-grid">
+<div class="facility-card">
+<img src="assets/hero-aerial.jpg" alt="Driving Range de Panorámica Golf">
+<h3>Driving Range</h3>
+<p>Amplia superficie de golpeo con objetivos a distintas distancias, para entrenamientos individuales y colectivos.</p>
+</div>
+<div class="facility-card">
+<img src="assets/el-campo.jpg" alt="Putting Green de Panorámica Golf">
+<h3>Putting Green</h3>
+<p>Una gran superficie de putting, con pendientes y velocidades variadas, para preparar el recorrido antes de salir a jugar.</p>
+</div>
+<div class="facility-card">
+<img src="assets/pkg1.jpg" alt="Zona de Juego Corto de Panorámica Golf">
+<h3>Zona de Juego Corto</h3>
+<p>Chips, pitch, bunker y aproximaciones desde cualquier posición — la parte del juego que más diferencia marca en la tarjeta.</p>
+</div>
+<div class="facility-card">
+<img src="assets/pkg2.jpg" alt="Recorrido de Par 3 de Panorámica Golf">
+<h3>Recorrido Par 3</h3>
+<p>Un recorrido propio de pares 3 para trasladar el entrenamiento al campo — ideal para iniciación y para la Escuela de Golf.</p>
+</div>
+</div>
+<a href="juega-panoramica.html#escuela" class="text-link">Ver Escuela de Golf</a>
+</div>
+</div>
+
+<section class="campo-cta">
+<div class="eyebrow">Reservar</div>
+<h2>Elige tu fecha, tu hora y disfruta del campo sin esperas.</h2>
+<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary">Reservar Tee Time</a>
+</section>
+
+<footer>
+<div>© Panorámica Golf, Sports &amp; Resort · Sant Jordi</div>
+<div class="flangs">ES · EN · DE · FR · CA</div>
+</footer>
+
+<script>
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => header.classList.toggle('solid', window.scrollY > 40));
+
+const burger = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+document.getElementById('closeNav').addEventListener('click', () => mobileNav.classList.remove('open'));
+burger.addEventListener('click', () => mobileNav.classList.add('open'));
+
+// En pantallas pequeñas se sirve la foto (poster) en vez del vídeo, para no penalizar datos/rendimiento en móvil.
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo && window.innerWidth < 760) {
+heroVideo.removeAttribute('autoplay');
+heroVideo.pause();
+heroVideo.removeAttribute('src');
+heroVideo.querySelector('source')?.remove();
+heroVideo.load();
+}
+
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+document.querySelectorAll('.lang-option').forEach(opt=>{
+opt.addEventListener('click', (e)=>{
+e.preventDefault();
+document.getElementById('langCurrent').querySelector('.lang-code').textContent = opt.dataset.lang;
+});
+});
+
+// Submenús desplegables: si el item tiene submenú, el click lo abre/cierra en vez de navegar.
+// Si no tiene submenú, el enlace funciona con normalidad y navega a la sección.
+document.querySelectorAll('.nav-item.has-dropdown > a').forEach(link => {
+link.addEventListener('click', (e) => {
+e.preventDefault();
+const item = link.closest('.nav-item');
+const wasOpen = item.classList.contains('open');
+document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+if (!wasOpen) item.classList.add('open');
+});
+});
+document.addEventListener('click', (e) => {
+if (!e.target.closest('.nav-item.has-dropdown')) {
+document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+}
+});
+document.querySelectorAll('.nav-dropdown a').forEach(a => {
+a.addEventListener('click', () => {
+document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+});
+});
+</script>
+</body>
+</html>
