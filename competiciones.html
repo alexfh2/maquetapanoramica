@@ -358,13 +358,31 @@ nav.primary-nav{display:none;}
 .cine-media::after{background:linear-gradient(180deg, rgba(8,10,6,0.4) 0%, rgba(8,10,6,0.75) 65%, rgba(8,10,6,0.9) 100%);}
 }
 
-/* ---------- Ranking panel (overlapping floating card) ---------- */
-.rank-panel-wrap{position:relative;z-index:5;margin-top:-110px;padding:0 clamp(20px,5vw,64px);}
-.rank-panel{background:var(--dark-panel);color:#fff;box-shadow:0 40px 70px -24px rgba(0,0,0,0.4);max-width:1040px;margin:0 auto;padding:48px clamp(24px,5vw,60px) 54px;}
-.rank-panel .under-construction{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--sand,var(--terracotta));background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 14px;margin-bottom:22px;}
-.rank-panel h2{color:#fff;font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(26px,3.4vw,36px);margin-bottom:10px;}
-.rank-panel > p{font-size:14.5px;color:rgba(255,255,255,0.68);max-width:70ch;margin-bottom:36px;}
+
+/* ---------- Competiciones: panel sólido centrado sobre la foto ---------- */
+.comp-section{min-height:100vh;align-items:center;padding-top:150px;padding-bottom:90px;}
+.comp-section .cine-media::after{background:linear-gradient(180deg, rgba(8,10,6,0.28) 0%, rgba(8,10,6,0.42) 100%);}
+.comp-panel-wrap{position:relative;z-index:2;width:100%;display:flex;justify-content:center;padding:0 clamp(20px,5vw,56px);}
+.comp-panel{background:var(--dark-panel);color:#fff;box-shadow:0 40px 80px -20px rgba(0,0,0,0.45);width:100%;max-width:1240px;padding:40px clamp(24px,3.5vw,56px) 48px;}
+@media (max-width:900px){
+.comp-section{padding-top:130px;}
+}
+.under-construction{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--sand,var(--terracotta));background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.24);padding:7px 14px;margin-bottom:24px;}
 .rank-cols{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;}
+
+/* ---------- Tabs (Competiciones) — una sola fila siempre ---------- */
+.tabs-nav{display:flex;flex-wrap:nowrap;gap:clamp(4px,1.4vw,10px);border-bottom:1px solid rgba(255,255,255,0.16);margin-bottom:30px;overflow-x:auto;}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,0.55);font-family:var(--sans);font-size:clamp(10px,1vw,12px);letter-spacing:0.05em;text-transform:uppercase;font-weight:500;padding:12px 10px;cursor:pointer;border-bottom:2px solid transparent;transition:color .2s ease, border-color .2s ease;white-space:nowrap;flex:none;}
+.tab-btn:hover{color:rgba(255,255,255,0.85);}
+.tab-btn.active{color:#fff;border-bottom-color:var(--terracotta);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.calendar-embed{width:100%;background:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.12);}
+.calendar-embed iframe{width:100%;height:640px;border:none;display:block;}
+@media (max-width:600px){
+.tab-btn{padding:10px 8px;}
+.calendar-embed iframe{height:520px;}
+}
 .rank-col-title{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;}
 .rank-row2{display:flex;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14.5px;}
 .rank-row2:first-of-type{border-top:1px solid rgba(255,255,255,0.1);}
@@ -405,10 +423,9 @@ nav.primary-nav{display:none;}
 <a href="juega-panoramica.html">Juega Panorámica <span class="caret"></span></a>
 <div class="nav-dropdown">
 <a href="juega-panoramica.html#green-fees">Green Fees</a>
-<a href="juega-panoramica.html#escuela">Escuela de Golf</a>
-<a href="juega-panoramica.html#bonos">Bonos y Promociones</a>
-<a href="juega-panoramica.html#packs">Packs de Golf</a>
-<a href="juega-panoramica.html#alojamiento">Alojamiento + Golf</a>
+<a href="juega-panoramica.html#bonos">Bonos</a>
+<a href="juega-panoramica.html#grupos">Grupos</a>
+<a href="juega-panoramica.html#escuela">Escuela</a>
 </div>
 </div>
 <span class="dot">·</span>
@@ -452,44 +469,55 @@ nav.primary-nav{display:none;}
 <a href="index.html#contacto">Contacto</a>
 <div class="m-lang">ES · EN · DE · CA · FR</div>
 </div>
-<section class="cine-section first" id="competiciones-hero">
+<section class="cine-section first comp-section" id="competiciones-hero">
 <div class="cine-media"><img src="assets/competiciones-bg.jpg" alt="Competiciones en Panorámica Golf"></div>
-<div class="cine-content">
-<div class="eyebrow">Competiciones</div>
-<h2>La vida competitiva de Panorámica.</h2>
-<p>Orden del Mérito, Liga de Verano y torneos sociales durante toda la temporada. Calendario, inscripciones y resultados, todo en un mismo sitio.</p>
-</div>
-</section>
+<div class="comp-panel-wrap">
+<div class="comp-panel">
+<span class="under-construction">Rankings de ejemplo — calendario en directo vía Golf Directo</span>
 
-<div class="rank-panel-wrap">
-<div class="rank-panel">
-<span class="under-construction">Página en construcción — conectando con GalaxyGolf</span>
-<h2>Orden del Mérito y Liga de Verano 2026</h2>
-<p>Estos datos son de ejemplo. Muy pronto esta sección se conectará en directo con GalaxyGolf para mostrar clasificaciones, calendario e inscripciones actualizadas en tiempo real.</p>
-<div class="rank-cols">
-<div>
-<div class="rank-col-title">Orden del Mérito — Ranking</div>
+<div class="tabs-nav">
+<button class="tab-btn active" data-tab="calendario">Calendario</button>
+<button class="tab-btn" data-tab="individual">Orden del Mérito Individual</button>
+<button class="tab-btn" data-tab="parejas">Orden del Mérito Parejas</button>
+<button class="tab-btn" data-tab="liga">Liga de Verano</button>
+</div>
+
+<div class="tab-panel active" id="tab-calendario">
+<div class="calendar-embed">
+<iframe src="https://www.golfdirecto.com/next/micro/client/66c3634ea89c0115aaf16686/tournament/list" loading="lazy" title="Calendario de torneos — Golf Directo"></iframe>
+</div>
+<a href="https://www.golfdirecto.com/next/micro/client/66c3634ea89c0115aaf16686/tournament/list" target="_blank" rel="noopener" class="text-link" style="color:#fff;margin-top:16px;">Abrir calendario en una pestaña nueva</a>
+</div>
+
+<div class="tab-panel" id="tab-individual">
+<div class="rank-col-title">Orden del Mérito Individual — Ranking</div>
 <div class="rank-row2"><span class="rn">01</span><span class="rname">M. Terraga</span><span class="rpts">628 pts</span></div>
 <div class="rank-row2"><span class="rn">02</span><span class="rname">A. Roselló</span><span class="rpts">602 pts</span></div>
 <div class="rank-row2"><span class="rn">03</span><span class="rname">J. Prats</span><span class="rpts">581 pts</span></div>
 <div class="rank-row2"><span class="rn">04</span><span class="rname">L. Ibáñez</span><span class="rpts">554 pts</span></div>
 <div class="rank-row2"><span class="rn">05</span><span class="rname">P. Sanz</span><span class="rpts">530 pts</span></div>
 </div>
-<div>
-<div class="rank-col-title">Agenda / Próximos torneos</div>
-<div class="agenda-row2"><span class="adate">14 MAR</span><span class="aname">Orden del Mérito · Jornada 1</span><span class="atime">07:30</span></div>
-<div class="agenda-row2"><span class="adate">28 MAR</span><span class="aname">Copa Presidente</span><span class="atime">08:00</span></div>
-<div class="agenda-row2"><span class="adate">11 ABR</span><span class="aname">Winter Golf Cup</span><span class="atime">09:00</span></div>
-<div class="agenda-row2"><span class="adate">02 MAY</span><span class="aname">Liga de Verano</span><span class="atime">08:30</span></div>
-</div>
-</div>
-</div>
+
+<div class="tab-panel" id="tab-parejas">
+<div class="rank-col-title">Orden del Mérito Parejas — Ranking</div>
+<div class="rank-row2"><span class="rn">01</span><span class="rname">Terraga / Roselló</span><span class="rpts">1.140 pts</span></div>
+<div class="rank-row2"><span class="rn">02</span><span class="rname">Prats / Ibáñez</span><span class="rpts">1.085 pts</span></div>
+<div class="rank-row2"><span class="rn">03</span><span class="rname">Sanz / Vidal</span><span class="rpts">998 pts</span></div>
+<div class="rank-row2"><span class="rn">04</span><span class="rname">Bosch / Ferrer</span><span class="rpts">960 pts</span></div>
+<div class="rank-row2"><span class="rn">05</span><span class="rname">Roig / Martí</span><span class="rpts">915 pts</span></div>
 </div>
 
-<section class="page-cta" style="margin-top:80px;">
-<div class="eyebrow">Inscripciones</div>
-<h2>¿Listo para competir en la próxima jornada?</h2>
-<a href="index.html#contacto" class="btn btn-primary">Inscribirme en la próxima jornada</a>
+<div class="tab-panel" id="tab-liga">
+<div class="rank-col-title">Liga de Verano — Clasificación</div>
+<div class="rank-row2"><span class="rn">01</span><span class="rname">A. Roselló</span><span class="rpts">312 pts</span></div>
+<div class="rank-row2"><span class="rn">02</span><span class="rname">M. Terraga</span><span class="rpts">298 pts</span></div>
+<div class="rank-row2"><span class="rn">03</span><span class="rname">L. Ibáñez</span><span class="rpts">276 pts</span></div>
+<div class="rank-row2"><span class="rn">04</span><span class="rname">P. Sanz</span><span class="rpts">254 pts</span></div>
+<div class="rank-row2"><span class="rn">05</span><span class="rname">J. Prats</span><span class="rpts">231 pts</span></div>
+</div>
+
+</div>
+</div>
 </section>
 
 <footer>
@@ -544,6 +572,17 @@ document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('ope
 document.querySelectorAll('.nav-dropdown a').forEach(a => {
 a.addEventListener('click', () => {
 document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+});
+});
+
+// Pestañas de Competiciones
+document.querySelectorAll('.tab-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+const target = btn.dataset.tab;
+document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+btn.classList.add('active');
+document.getElementById('tab-' + target).classList.add('active');
 });
 });
 </script>
