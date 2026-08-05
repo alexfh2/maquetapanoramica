@@ -285,10 +285,15 @@ nav.primary-nav{display:none;}
 .amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;}
 .amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
 
-.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px;}
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px;}
 .mod-card{background:var(--cream);padding:28px 22px;}
-.mod-card h3{font-family:var(--serif);font-weight:400;font-size:19px;margin-bottom:10px;}
-.mod-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+.mod-card h3{font-family:var(--serif);font-weight:400;font-size:19px;margin-bottom:14px;}
+.mod-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px;}
+.mod-card p b{color:var(--ink);font-weight:600;}
+.mod-card .text-link{margin-top:10px;display:inline-block;}
+.advantage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:28px;border-top:1px solid rgba(255,255,255,0.18);}
+.advantage-item{padding:15px 16px 15px 0;border-bottom:1px solid rgba(255,255,255,0.18);font-size:14px;position:relative;}
+.advantage-item::before{content:'—';color:var(--terracotta);margin-right:10px;}
 
 .news-list{margin-top:8px;}
 .news-row{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);}
@@ -364,7 +369,8 @@ nav.primary-nav{display:none;}
 <a href="juega-panoramica.html">Juega Panorámica <span class="caret"></span></a>
 <div class="nav-dropdown">
 <a href="juega-panoramica.html#green-fees">Green Fees</a>
-<a href="juega-panoramica.html#bonos">Bonos</a>
+<a href="juega-panoramica.html#golf-pass-resident">Golf Pass Resident</a>
+<a href="juega-panoramica.html#packs-estancia">Packs con Estancia</a>
 <a href="juega-panoramica.html#grupos">Grupos</a>
 <a href="juega-panoramica.html#escuela">Escuela</a>
 </div>
@@ -376,12 +382,18 @@ nav.primary-nav{display:none;}
 <a href="socios.html#hazte-socio">Hazte Socio</a>
 <a href="socios.html#ventajas">Ventajas</a>
 <a href="socios.html#modalidades">Modalidades</a>
-<a href="socios.html#noticias">Noticias</a>
 </div>
 </div>
 <span class="dot">·</span>
 <a href="competiciones.html">Competiciones</a><span class="dot">·</span>
-<a href="index.html#restaurante">Restaurante</a><span class="dot">·</span>
+<div class="nav-item has-dropdown">
+<a href="restaurante.html">Restaurante <span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="restaurante.html#restaurante">Restaurante</a>
+<a href="restaurante.html#golf-gastronomia">Golf &amp; Gastronomía</a>
+</div>
+</div>
+<span class="dot">·</span>
 <a href="index.html#contacto">Contacto</a>
 </nav>
 
@@ -406,7 +418,7 @@ nav.primary-nav{display:none;}
 <a href="juega-panoramica.html">Juega Panorámica</a>
 <a href="socios.html">Socios</a>
 <a href="competiciones.html">Competiciones</a>
-<a href="index.html#restaurante">Restaurante</a>
+<a href="restaurante.html">Restaurante</a>
 <a href="index.html#contacto">Contacto</a>
 <div class="m-lang">ES · EN · DE · CA · FR</div>
 </div>
@@ -414,25 +426,48 @@ nav.primary-nav{display:none;}
 <div class="cine-media"><img src="assets/restaurante.jpg" alt="Socios de Panorámica disfrutando del club"></div>
 <div class="cine-content">
 <div class="eyebrow">Hazte Socio</div>
-<h2>Disfruta del campo todo el año</h2>
-<p>Adquiere un Derecho de Uso de Club de Panorámica Golf, ya sea para disfrutar del campo todo el año o solo en vacaciones. Hay modalidades individuales, familiares, junior y joven, con pago trimestral domiciliado o anual con descuento.</p>
+<h2>Pertenece a un club, no solo a un campo</h2>
+<p>Formar parte de Panorámica Golf significa mucho más que disfrutar de un magnífico recorrido — es pertenecer a un club donde el deporte, la competición y la vida social conviven todo el año. No mostramos cuotas aquí: preferimos un trato personalizado, asesorándote según tus necesidades.</p>
+<p style="font-size:13px;color:rgba(255,255,255,0.65);margin-top:16px;">Cuéntanos tu nombre, teléfono, email y la modalidad que te interesa, y te contactamos directamente.</p>
 <a href="mailto:golf@panoramicagrupo.com" class="btn btn-primary">Solicitar información de socio</a>
 </div>
 </section>
 
-<section class="cine-section right" id="ventajas">
+<section class="cine-section right" id="golf-pass">
+<div class="cine-media"><img src="assets/campo-diseno.jpg" alt="Panorámica Golf Pass"></div>
+<div class="cine-content">
+<div class="eyebrow">Panorámica Golf Pass</div>
+<h2>La mejor manera de empezar a vivir el club</h2>
+<p>Más que una membresía: es tu primer paso para formar parte de Panorámica Golf. Por <strong>89 €/mes</strong> (mínimo 3 meses, máximo 12), disfruta del club antes de decidir tu modalidad de socio.</p>
+<div class="amenity-grid">
+<div class="amenity-row"><span>Green Fee lunes a viernes</span><span>Desde 15:00h invierno / 16:00h verano</span></div>
+<div class="amenity-row"><span>Fuera de esos horarios</span><span>15 € fijo</span></div>
+<div class="amenity-row"><span>Buggy</span><span>40 €</span></div>
+<div class="amenity-row"><span>Torneos del club</span><span>Con descuento</span></div>
+<div class="amenity-row"><span>Pro Shop</span><span>5% de descuento</span></div>
+<div class="amenity-row"><span>Derecho de uso</span><span>Bonificado tras 12 meses</span></div>
+</div>
+<p style="font-size:13px;color:rgba(255,255,255,0.65);margin-top:16px;">Descubre el club, participa en ligas y torneos, y cuando estés listo, da el paso y hazte socio.</p>
+<a href="https://wa.me/34673408388" target="_blank" rel="noopener" class="btn btn-primary">Escríbenos por WhatsApp</a>
+</div>
+</section>
+
+<section class="cine-section" id="ventajas">
 <div class="cine-media"><img src="assets/el-campo.jpg" alt="Ventajas de ser socio en Panorámica"></div>
 <div class="cine-content">
 <div class="eyebrow">Ventajas</div>
-<h2>Todo lo que incluye ser socio</h2>
-<p>Salida al campo a precio reducido, uso gratuito del campo de prácticas y descuentos en todo lo que rodea tu juego.</p>
-<div class="amenity-grid">
-<div class="amenity-row"><span>Salida al campo</span><span>6 € laborables · 10 € festivos</span></div>
-<div class="amenity-row"><span>Campo de prácticas y pares 3</span><span>Uso gratuito</span></div>
-<div class="amenity-row"><span>Buggies, carritos y taquillas</span><span>Precio socio</span></div>
-<div class="amenity-row"><span>Clases de golf</span><span>Descuento socio</span></div>
-<div class="amenity-row"><span>Torneos sociales</span><span>Inscripción preferente</span></div>
-<div class="amenity-row"><span>Green Fee invitados</span><span>Máx. 10 al año</span></div>
+<h2>Todo lo que hace diferente ser socio</h2>
+<div class="advantage-grid">
+<div class="advantage-item">Prioridad en reservas</div>
+<div class="advantage-item">Órdenes de Mérito</div>
+<div class="advantage-item">Liga de Verano</div>
+<div class="advantage-item">Torneos sociales</div>
+<div class="advantage-item">Actividades exclusivas</div>
+<div class="advantage-item">Tarifas especiales</div>
+<div class="advantage-item">Correspondencia con otros clubes</div>
+<div class="advantage-item">Instalaciones de entrenamiento</div>
+<div class="advantage-item">Vida social del club</div>
+<div class="advantage-item">Escuela de Golf</div>
 </div>
 </div>
 </section>
@@ -440,33 +475,29 @@ nav.primary-nav{display:none;}
 <section class="detail-section" id="modalidades">
 <div class="eyebrow">Modalidades</div>
 <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;">Elige la que mejor se adapte a ti</h2>
+<p style="font-size:14px;color:var(--ink-soft);max-width:60ch;margin-top:8px;">Sin precios aquí — cada modalidad se adapta a ti, y te asesoramos personalmente sobre la que mejor encaja.</p>
 <div class="mod-grid">
 <div class="mod-card">
-<h3>Individual</h3>
-<p>Derecho de Uso a título personal, pago trimestral o anual.</p>
-</div>
-<div class="mod-card">
 <h3>Familiar</h3>
-<p>Pareja e hijos incluidos en una misma modalidad.</p>
+<p><b>A quién va dirigida:</b> parejas y familias que quieren vivir el club juntos.</p>
+<p><b>Qué incluye:</b> contenido pendiente de confirmar con el club.</p>
+<p><b>Ventajas:</b> contenido pendiente de confirmar con el club.</p>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Solicitar información</a>
 </div>
 <div class="mod-card">
-<h3>Junior</h3>
-<p>Para menores, pensada para iniciarse en el club.</p>
+<h3>Individual</h3>
+<p><b>A quién va dirigida:</b> quien quiere disfrutar del club a título personal.</p>
+<p><b>Qué incluye:</b> contenido pendiente de confirmar con el club.</p>
+<p><b>Ventajas:</b> contenido pendiente de confirmar con el club.</p>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Solicitar información</a>
 </div>
 <div class="mod-card">
 <h3>Joven</h3>
-<p>Condiciones especiales para socios de hasta cierta edad.</p>
+<p><b>A quién va dirigida:</b> socios más jóvenes, con condiciones adaptadas.</p>
+<p><b>Qué incluye:</b> contenido pendiente de confirmar con el club.</p>
+<p><b>Ventajas:</b> contenido pendiente de confirmar con el club.</p>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Solicitar información</a>
 </div>
-</div>
-</section>
-
-<section class="detail-section" id="noticias" style="background:var(--dark-panel);color:#fff;">
-<div class="eyebrow" style="color:rgba(255,255,255,0.6);">Noticias para Socios</div>
-<h2 style="color:#fff;font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;">Información relevante</h2>
-<div class="news-list">
-<div class="news-row" style="border-color:rgba(255,255,255,0.14);"><span class="news-date" style="color:var(--terracotta);">14 MAR</span><span class="news-title" style="color:#fff;">Apertura de inscripciones — Orden del Mérito 2026</span></div>
-<div class="news-row" style="border-color:rgba(255,255,255,0.14);"><span class="news-date" style="color:var(--terracotta);">01 MAR</span><span class="news-title" style="color:#fff;">Nuevas condiciones de renovación de socios</span></div>
-<div class="news-row" style="border-color:rgba(255,255,255,0.14);"><span class="news-date" style="color:var(--terracotta);">15 FEB</span><span class="news-title" style="color:#fff;">Horario ampliado del club house en temporada alta</span></div>
 </div>
 </section>
 

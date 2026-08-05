@@ -384,6 +384,7 @@ nav.primary-nav{display:none;}
 .calendar-embed iframe{height:78dvh;min-height:560px;}
 }
 .rank-col-title{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;}
+.tab-intro{font-size:14px;color:rgba(255,255,255,0.75);max-width:65ch;margin-bottom:20px;line-height:1.6;}
 .rank-row2{display:flex;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14.5px;}
 .rank-row2:first-of-type{border-top:1px solid rgba(255,255,255,0.1);}
 .rank-row2 .rn{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:16px;width:22px;flex:none;}
@@ -423,7 +424,8 @@ nav.primary-nav{display:none;}
 <a href="juega-panoramica.html">Juega Panorámica <span class="caret"></span></a>
 <div class="nav-dropdown">
 <a href="juega-panoramica.html#green-fees">Green Fees</a>
-<a href="juega-panoramica.html#bonos">Bonos</a>
+<a href="juega-panoramica.html#golf-pass-resident">Golf Pass Resident</a>
+<a href="juega-panoramica.html#packs-estancia">Packs con Estancia</a>
 <a href="juega-panoramica.html#grupos">Grupos</a>
 <a href="juega-panoramica.html#escuela">Escuela</a>
 </div>
@@ -435,12 +437,18 @@ nav.primary-nav{display:none;}
 <a href="socios.html#hazte-socio">Hazte Socio</a>
 <a href="socios.html#ventajas">Ventajas</a>
 <a href="socios.html#modalidades">Modalidades</a>
-<a href="socios.html#noticias">Noticias</a>
 </div>
 </div>
 <span class="dot">·</span>
 <a href="competiciones.html">Competiciones</a><span class="dot">·</span>
-<a href="index.html#restaurante">Restaurante</a><span class="dot">·</span>
+<div class="nav-item has-dropdown">
+<a href="restaurante.html">Restaurante <span class="caret"></span></a>
+<div class="nav-dropdown">
+<a href="restaurante.html#restaurante">Restaurante</a>
+<a href="restaurante.html#golf-gastronomia">Golf &amp; Gastronomía</a>
+</div>
+</div>
+<span class="dot">·</span>
 <a href="index.html#contacto">Contacto</a>
 </nav>
 
@@ -465,7 +473,7 @@ nav.primary-nav{display:none;}
 <a href="juega-panoramica.html">Juega Panorámica</a>
 <a href="socios.html">Socios</a>
 <a href="competiciones.html">Competiciones</a>
-<a href="index.html#restaurante">Restaurante</a>
+<a href="restaurante.html">Restaurante</a>
 <a href="index.html#contacto">Contacto</a>
 <div class="m-lang">ES · EN · DE · CA · FR</div>
 </div>
@@ -473,8 +481,6 @@ nav.primary-nav{display:none;}
 <div class="cine-media"><img src="assets/competiciones-bg.jpg" alt="Competiciones en Panorámica Golf"></div>
 <div class="comp-panel-wrap">
 <div class="comp-panel">
-<span class="under-construction">Rankings de ejemplo — calendario en directo vía Golf Directo</span>
-
 <div class="tabs-nav">
 <button class="tab-btn active" data-tab="calendario">Calendario</button>
 <button class="tab-btn" data-tab="individual">Orden del Mérito Individual</button>
@@ -483,6 +489,7 @@ nav.primary-nav{display:none;}
 </div>
 
 <div class="tab-panel active" id="tab-calendario">
+<p class="tab-intro">Aquí puedes consultar el calendario de torneos del club e inscribirte directamente en la prueba que te interese.</p>
 <div class="calendar-embed">
 <iframe src="https://www.golfdirecto.com/next/micro/client/66c3634ea89c0115aaf16686/tournament/list" loading="lazy" title="Calendario de torneos — Golf Directo"></iframe>
 </div>

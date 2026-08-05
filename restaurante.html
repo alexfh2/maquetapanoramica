@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panorámica Golf, Sports &amp; Resort — Stay. Play. Enjoy the Mediterranean.</title>
+<title>Restaurante — Panorámica Golf, Sports &amp; Resort</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,10 +39,6 @@ header.solid{background:rgba(27,35,24,0.94);backdrop-filter:blur(10px);padding:1
 header.solid .logo-mark{height:52px;}
 .logo-mark img{position:absolute;top:0;left:0;height:76px;width:auto;max-width:none;transition:opacity .5s ease, height .3s ease;}
 header.solid .logo-mark img{height:52px;}
-.logo-mark .logo-base{opacity:1;}
-.logo-mark .logo-scrolled{opacity:0;}
-header.solid .logo-mark .logo-base{opacity:0;}
-header.solid .logo-mark .logo-scrolled{opacity:1;}
 
 nav.primary-nav{display:flex;align-items:center;gap:clamp(8px,1vw,16px);flex:none;}
 nav.primary-nav a{font-size:13px;letter-spacing:0.09em;text-transform:uppercase;color:#fff;font-weight:500;white-space:nowrap;opacity:0.92;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .2s ease,opacity .2s ease;}
@@ -162,7 +158,7 @@ h1.hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(42px,7vw,
 .resto-text .text-link{margin-top:26px;color:var(--ink);}
 .resto-media img{width:100%;aspect-ratio:14/9;object-fit:cover;}
 .contact-wrap{padding:0 clamp(20px,5vw,64px) 0;}
-.contact-panel{position:relative;z-index:2;background:rgba(23,31,20,0.82);backdrop-filter:blur(8px);color:#fff;padding:clamp(40px,6vw,64px);max-width:1240px;margin:0 auto;box-shadow:0 40px 90px -20px rgba(0,0,0,0.5);}
+.contact-panel{background:var(--dark-panel);color:#fff;padding:clamp(40px,6vw,64px);}
 .contact-panel h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,44px);margin-top:12px;}
 .contact-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:44px;}
 .contact-details{font-size:14.5px;color:rgba(255,255,255,0.85);}
@@ -191,59 +187,192 @@ nav.primary-nav{display:none;}
 }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 
-/* ---------- Cinematic full-bleed section ---------- */
-.cine-section{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;}
+/* ============ CAMPO — página dedicada ============ */
+.page-hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+.page-hero-media{position:absolute;inset:0;z-index:0;}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;animation:campoKen 24s ease-in-out infinite alternate;}
+@keyframes campoKen{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.page-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.42) 0%, rgba(15,17,12,0.08) 30%, rgba(15,17,12,0.2) 55%, rgba(15,17,12,0.78) 100%);}
+.page-hero-body{position:relative;z-index:2;color:#fff;padding:120px clamp(20px,5vw,64px) 56px;max-width:760px;}
+.breadcrumb{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+.breadcrumb a{border-bottom:1px solid rgba(255,255,255,0.35);}
+.page-hero-body h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(38px,5.4vw,66px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-top:14px;}
+.page-hero-body .hero-sub{margin-top:18px;max-width:52ch;}
+
+.quick-tiles{margin-top:-64px;position:relative;z-index:4;padding:0 clamp(20px,5vw,64px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cream);border:1px solid var(--line);}
+.tile{padding:30px 22px 26px;border-right:1px solid var(--line);transition:background .2s ease;}
+.tile:last-child{border-right:none;}
+.tile:hover{background:rgba(185,116,82,0.06);}
+.tile-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:13px;display:block;margin-bottom:12px;}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:8px;line-height:1.2;}
+.tile p{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;min-height:30px;}
+.tile .text-link{font-size:10px;}
+
+.detail-section{padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);}
+.detail-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center;}
+.detail-grid.reverse .detail-media{order:2;}
+.detail-media img{width:100%;height:460px;object-fit:cover;}
+.detail-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;line-height:1.15;}
+.detail-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:18px;max-width:46ch;}
+.detail-stats{display:flex;border-top:1px solid var(--line);margin-top:30px;padding-top:24px;}
+.detail-stats div{flex:1;padding-right:14px;}
+.detail-stats b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--terracotta);}
+.detail-stats span{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+.detail-text .text-link, .detail-text .btn{margin-top:28px;}
+
+.price-table{border-top:1px solid var(--line);margin-top:8px;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);}
+.price-row .p-name{font-family:var(--serif);font-size:17px;}
+.price-row .p-meta{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+.price-row .p-val{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:19px;white-space:nowrap;}
+.price-note{font-size:12.5px;color:var(--ink-soft);margin-top:20px;}
+
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+.amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
+
+.campo-cta{background:var(--dark-panel);color:#fff;padding:clamp(50px,7vw,80px) clamp(20px,5vw,64px);text-align:center;}
+.campo-cta .eyebrow{color:rgba(255,255,255,0.6);}
+.campo-cta h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(28px,3.8vw,42px);margin:14px auto 26px;max-width:22ch;}
+
+@media (max-width:980px){
+.tiles-grid{grid-template-columns:1fr 1fr;}
+.tile{border-bottom:1px solid var(--line);}
+.tile:nth-child(2n){border-right:none;}
+.quick-tiles{margin-top:-40px;}
+.detail-grid{grid-template-columns:1fr;gap:36px;}
+.detail-grid.reverse .detail-media{order:-1;}
+.detail-media img{height:320px;}
+.amenity-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+.tiles-grid{grid-template-columns:1fr;}
+.tile{border-right:none;}
+}
+
+/* ============ SOCIOS — página dedicada ============ */
+.page-hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
+.page-hero-media{position:absolute;inset:0;z-index:0;}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;animation:pageKen 24s ease-in-out infinite alternate;}
+@keyframes pageKen{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.page-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,12,0.42) 0%, rgba(15,17,12,0.08) 30%, rgba(15,17,12,0.2) 55%, rgba(15,17,12,0.78) 100%);}
+.page-hero-body{position:relative;z-index:2;color:#fff;padding:120px clamp(20px,5vw,64px) 56px;max-width:760px;}
+.breadcrumb{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+.breadcrumb a{border-bottom:1px solid rgba(255,255,255,0.35);}
+.page-hero-body h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(38px,5.4vw,66px);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-top:14px;}
+.page-hero-body .hero-sub{margin-top:18px;max-width:52ch;font-family:var(--sans);font-size:15px;color:rgba(255,255,255,0.82);}
+
+.quick-tiles{margin-top:-64px;position:relative;z-index:4;padding:0 clamp(20px,5vw,64px);}
+.tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cream);border:1px solid var(--line);}
+.tile{padding:30px 22px 26px;border-right:1px solid var(--line);transition:background .2s ease;}
+.tile:last-child{border-right:none;}
+.tile:hover{background:rgba(185,116,82,0.06);}
+.tile-num{font-family:var(--serif);font-style:italic;color:var(--terracotta);font-size:13px;display:block;margin-bottom:12px;}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:17px;margin-bottom:8px;line-height:1.2;}
+.tile p{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;min-height:30px;}
+.tile .text-link{font-size:10px;}
+
+.detail-section{padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);}
+.detail-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center;}
+.detail-grid.reverse .detail-media{order:2;}
+.detail-media img{width:100%;height:460px;object-fit:cover;}
+.detail-text h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,42px);margin-top:12px;line-height:1.15;}
+.detail-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-top:18px;max-width:46ch;}
+.detail-text .text-link, .detail-text .btn{margin-top:28px;}
+
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+.amenity-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.amenity-row span:last-child{color:var(--ink-soft);font-size:12px;}
+
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px;}
+.mod-card{background:var(--cream);padding:28px 22px;}
+.mod-card h3{font-family:var(--serif);font-weight:400;font-size:19px;margin-bottom:14px;}
+.mod-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px;}
+.mod-card p b{color:var(--ink);font-weight:600;}
+.mod-card .text-link{margin-top:10px;display:inline-block;}
+.advantage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:28px;border-top:1px solid rgba(255,255,255,0.18);}
+.advantage-item{padding:15px 16px 15px 0;border-bottom:1px solid rgba(255,255,255,0.18);font-size:14px;position:relative;}
+.advantage-item::before{content:'—';color:var(--terracotta);margin-right:10px;}
+
+.news-list{margin-top:8px;}
+.news-row{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);}
+.news-row:first-of-type{border-top:1px solid var(--line);}
+.news-date{color:var(--terracotta);font-size:11.5px;font-weight:600;letter-spacing:0.04em;width:80px;flex:none;}
+.news-title{font-family:var(--serif);font-size:16.5px;flex:1;}
+
+.page-cta{background:var(--dark-panel);color:#fff;padding:clamp(50px,7vw,80px) clamp(20px,5vw,64px);text-align:center;}
+.page-cta .eyebrow{color:rgba(255,255,255,0.6);}
+.page-cta h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(28px,3.8vw,42px);margin:14px auto 26px;max-width:24ch;}
+
+@media (max-width:980px){
+.tiles-grid{grid-template-columns:1fr 1fr;}
+.tile{border-bottom:1px solid var(--line);}
+.tile:nth-child(2n){border-right:none;}
+.quick-tiles{margin-top:-40px;}
+.detail-grid{grid-template-columns:1fr;gap:36px;}
+.detail-grid.reverse .detail-media{order:-1;}
+.detail-media img{height:320px;}
+.amenity-grid{grid-template-columns:1fr;}
+.mod-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+.tiles-grid{grid-template-columns:1fr;}
+.tile{border-right:none;}
+.mod-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- Cinematic full-bleed section (Socios) ---------- */
+.cine-section{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;}
 .cine-media{position:absolute;inset:0;z-index:0;}
 .cine-media img{width:100%;height:100%;object-fit:cover;animation:cineKen 28s ease-in-out infinite alternate;}
 @keyframes cineKen{0%{transform:scale(1);}100%{transform:scale(1.09);}}
-.cine-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,10,6,0.72) 0%, rgba(8,10,6,0.46) 42%, rgba(8,10,6,0.14) 70%, rgba(8,10,6,0) 100%);}
-#contacto .cine-media::after{background:linear-gradient(180deg, rgba(8,10,6,0.35) 0%, rgba(8,10,6,0.55) 100%);}
-.cine-section.right .cine-media::after{background:linear-gradient(270deg, rgba(8,10,6,0.72) 0%, rgba(8,10,6,0.46) 42%, rgba(8,10,6,0.14) 70%, rgba(8,10,6,0) 100%);}
-.cine-content{position:relative;z-index:2;color:#fff;max-width:560px;padding:0 clamp(24px,5vw,64px);}
+.cine-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,10,6,0.7) 0%, rgba(8,10,6,0.44) 42%, rgba(8,10,6,0.13) 70%, rgba(8,10,6,0) 100%);}
+.cine-section.right .cine-media::after{background:linear-gradient(270deg, rgba(8,10,6,0.7) 0%, rgba(8,10,6,0.44) 42%, rgba(8,10,6,0.13) 70%, rgba(8,10,6,0) 100%);}
+.cine-content{position:relative;z-index:2;color:#fff;max-width:600px;padding:0 clamp(24px,5vw,64px);}
+.cine-section.first{padding-top:150px;}
 .cine-section.right .cine-content{margin-left:auto;}
 .cine-content .eyebrow{color:rgba(255,255,255,0.75);text-shadow:0 2px 14px rgba(0,0,0,0.65);}
 .cine-content h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(30px,4.4vw,52px);line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);margin-top:14px;}
 .cine-content p{font-size:15.5px;line-height:1.75;color:rgba(255,255,255,0.94);margin-top:18px;max-width:48ch;text-shadow:0 2px 18px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.55);}
-.cine-content .text-link{color:#fff;margin-top:26px;display:inline-block;text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.cine-content .btn-primary, .cine-content .btn-outline, .cine-content .text-link{margin-top:26px;display:inline-block;text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.cine-content .amenity-grid{border-top:none;grid-template-columns:1fr;max-width:460px;}
+.cine-content .amenity-row{border-color:rgba(255,255,255,0.28) !important;padding:11px 0;}
+.cine-content .amenity-row span:first-child{color:#fff !important;text-shadow:0 2px 12px rgba(0,0,0,0.6);}
+.cine-content .amenity-row span:last-child{color:rgba(255,255,255,0.72) !important;text-shadow:0 1px 10px rgba(0,0,0,0.55);}
 @media (max-width:900px){
 .cine-section{min-height:auto;padding:90px 0;}
 .cine-content{max-width:100%;margin-left:0 !important;}
 .cine-media::after, .cine-section.right .cine-media::after{background:linear-gradient(180deg, rgba(8,10,6,0.4) 0%, rgba(8,10,6,0.75) 65%, rgba(8,10,6,0.9) 100%);}
 }
 
-/* ---------- Contacto: mapa, tiempo y redes ---------- */
-.contact-extra{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(255,255,255,0.14);}
-.contact-map{width:100%;min-height:340px;background:rgba(255,255,255,0.06);}
-.contact-map iframe{width:100%;height:100%;min-height:340px;border:none;display:block;filter:grayscale(0.15) contrast(1.05);}
-.contact-side{display:flex;flex-direction:column;gap:28px;}
-.weather-widget{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);padding:22px 24px;}
-.weather-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px;}
-.weather-loading{font-size:13px;color:rgba(255,255,255,0.5);}
-.weather-days{display:flex;flex-direction:column;gap:0;}
-.weather-day{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13.5px;}
-.weather-day:last-child{border-bottom:none;}
-.weather-day .wd-name{color:#fff;font-weight:500;text-transform:capitalize;width:70px;flex:none;}
-.weather-day .wd-icon{width:26px;height:26px;flex:none;color:var(--sand,#CBBDA6);display:flex;align-items:center;justify-content:center;}
-.weather-day .wd-icon svg{width:100%;height:100%;}
-.weather-day .wd-temp{color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums;text-align:right;flex:1;}
-.weather-day .wd-temp b{color:#fff;}
-.social-row{display:flex;align-items:center;gap:16px;}
-.social-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(255,255,255,0.3);color:#fff;transition:background .2s ease, border-color .2s ease;}
-.social-icon svg{width:16px;height:16px;}
-.social-icon:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5);}
+/* ---------- Restaurante — panel flotante y fichas de experiencias ---------- */
+.coming-soon{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.24);padding:7px 14px;margin-bottom:18px;}
+.exp-panel-wrap{position:relative;z-index:5;margin-top:-110px;padding:0 clamp(20px,5vw,64px);background:var(--dark-panel);}
+.exp-panel{background:var(--dark-panel);color:#fff;box-shadow:0 40px 70px -24px rgba(0,0,0,0.3);max-width:1200px;margin:0 auto;padding:48px clamp(24px,5vw,60px) 54px;}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px;}
+.exp-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);}
+.exp-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.exp-card-body{padding:20px 20px 24px;}
+.exp-card h3{font-family:var(--serif);font-weight:400;font-size:18px;margin-bottom:8px;color:#fff;}
+.exp-card .exp-meta{font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+.exp-card .exp-price{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:14px;}
+.exp-card a.text-link{color:#fff;font-size:12px;}
 @media (max-width:900px){
-.contact-extra{grid-template-columns:1fr;}
-.contact-map{min-height:280px;}
-.contact-map iframe{min-height:280px;}
+.exp-panel-wrap{margin-top:0;}
+.exp-panel{box-shadow:none;padding:40px 0;}
+.exp-grid{grid-template-columns:1fr 1fr;gap:20px;}
+}
+@media (max-width:560px){
+.exp-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
 <header id="siteHeader">
-<a href="#top" class="logo-mark">
-<img class="logo-base" src="assets/logo.png" alt="Panorámica Golf, Sports & Resort">
-<img class="logo-scrolled" src="assets/logo-white.png" alt="Panorámica Golf, Sports & Resort">
+<a href="index.html#top" class="logo-mark">
+<img src="assets/logo-white.png" alt="Panorámica Golf, Sports & Resort">
 </a>
 
 <nav class="primary-nav">
@@ -286,7 +415,7 @@ nav.primary-nav{display:none;}
 </div>
 </div>
 <span class="dot">·</span>
-<a href="#contacto">Contacto</a>
+<a href="index.html#contacto">Contacto</a>
 </nav>
 
 <div class="header-actions">
@@ -311,143 +440,109 @@ nav.primary-nav{display:none;}
 <a href="socios.html">Socios</a>
 <a href="competiciones.html">Competiciones</a>
 <a href="restaurante.html">Restaurante</a>
-<a href="#contacto">Contacto</a>
+<a href="index.html#contacto">Contacto</a>
 <div class="m-lang">ES · EN · DE · CA · FR</div>
 </div>
-
-<section class="hero" id="top">
-<div class="hero-media">
-<video autoplay muted loop playsinline poster="assets/hero-aerial.jpg" id="heroVideo">
-<source src="assets/hero-video.mp4" type="video/mp4">
-</video>
-</div>
-<div class="hero-body">
-<h1 class="hero-title">Stay. Play.<br>Enjoy the Mediterranean.</h1>
-<p class="hero-sub">Panorámica Golf, Sports &amp; Resort — Sant Jordi, Castellón</p>
-<div class="hero-ctas">
-<a href="https://open.teeone.golf/es/panoramica/disponibilidad" target="_blank" rel="noopener" class="btn btn-primary">Reservar tee time</a>
-<a href="juega-panoramica.html" class="btn btn-outline">Ver paquetes</a>
-</div>
-</div>
-<div class="hero-stats">
-<span>18 hoyos</span><span class="sep">·</span>
-<span>Par 72</span><span class="sep">·</span>
-<span>Diseño Bernhard Langer</span><span class="sep">·</span>
-<span>Abierto todo el año</span>
-</div>
-</section>
-
-<section class="section" id="intro">
-<div class="intro-top">
-<div>
-<div class="eyebrow">Panorámica Golf · Castellón</div>
-<h2>Un destino mediterráneo abierto al viajero.</h2>
-</div>
-<p>18 hoyos par 72 diseñados por Bernhard Langer, alojamiento propio dentro del resort, restaurante abierto al patio y competiciones internacionales durante todo el año.</p>
-</div>
-<div class="intro-rule"></div>
-<div class="intro-stats">
-<div>
-<div class="eyebrow">El Campo</div>
-<div class="val">18 hoyos par 72</div>
-</div>
-<div>
-<div class="eyebrow">Alojamiento</div>
-<div class="val">Villas y apartamentos</div>
-</div>
-<div>
-<div class="eyebrow">Experiencias</div>
-<div class="val">Green fees &amp; torneos</div>
-</div>
-</div>
-</section>
-
-<section class="bleed light-text" id="campo">
-<div class="bleed-media"><img src="assets/el-campo.jpg" alt="El campo de Panorámica entre olivos y agua"></div>
-<div class="bleed-content">
-<div class="eyebrow">El Campo</div>
-<h2>Un club con historia. Un recorrido con futuro.</h2>
-<a href="campo.html" class="text-link">Ver ficha del campo</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="juega">
-<div class="bleed-media"><img src="assets/juega-highlight.jpg" alt="Green fees, escuela y packs de golf en Panorámica"></div>
-<div class="bleed-content">
-<div class="eyebrow">Juega Panorámica</div>
-<h2>Green fees, escuela, bonos y packs — a tu manera.</h2>
-<a href="juega-panoramica.html" class="text-link">Descubrir Juega Panorámica</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="socios-highlight">
-<div class="bleed-media"><img src="assets/alojamiento.jpg" alt="Socios de Panorámica Golf"></div>
-<div class="bleed-content">
-<div class="eyebrow">Socios</div>
-<h2>Disfruta del campo todo el año.</h2>
-<a href="socios.html" class="text-link">Ver ventajas de socio</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="competiciones">
-<div class="bleed-media"><img src="assets/competiciones-bg.jpg" alt="Competiciones en Panorámica Golf"></div>
-<div class="bleed-content">
-<div class="eyebrow">Competiciones</div>
-<h2>La vida competitiva de Panorámica.</h2>
-<p style="color:rgba(255,255,255,0.85);margin-top:14px;font-size:14.5px;">Líder actual: M. Terraga · 628 pts — Próxima jornada: 14 de marzo, Orden del Mérito.</p>
-<a href="competiciones.html" class="text-link">Ver competiciones</a>
-</div>
-</section>
-
-<section class="bleed light-text" id="restaurante-highlight">
-<div class="bleed-media"><img src="assets/restaurante-interior.jpg" alt="Restaurant Gökotta en Panorámica Golf"></div>
-<div class="bleed-content">
+<section class="cine-section first" id="restaurante">
+<div class="cine-media"><img src="assets/restaurante-interior.jpg" alt="Restaurant Gökotta en Panorámica Golf"></div>
+<div class="cine-content">
 <div class="eyebrow">Restaurante &amp; Club</div>
-<h2>Restaurant Gökotta.</h2>
-<a href="restaurante.html" class="text-link">Ver restaurante y experiencias</a>
+<h2>Restaurant Gökotta</h2>
+<p>Terraza sobre el campo, patio con fuente y cocina mediterránea de temporada — el broche perfecto a tu ronda de golf. Carta, menús y eventos privados, en un espacio pensado para disfrutar tanto de una comida rápida entre hoyos como de una cena con calma.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:26px;">
+<a href="mailto:golf@panoramicagrupo.com" class="btn btn-primary">Reservar mesa</a>
+<a href="https://www.instagram.com/gokotta_restaurant/" target="_blank" rel="noopener" class="text-link" style="color:#fff;margin-top:0;">Instagram</a>
+</div>
+<p style="color:rgba(255,255,255,0.7);margin-top:16px;font-size:13px;">
+<a href="tel:+34744754902" style="border-bottom:1px solid rgba(255,255,255,0.3);">+34 744 754 902</a>
+<span style="opacity:0.5;margin:0 8px;">·</span>
+<a href="tel:+34964489251" style="border-bottom:1px solid rgba(255,255,255,0.3);">+34 964 489 251</a>
+</p>
 </div>
 </section>
 
-<section class="cine-section" id="contacto" style="min-height:auto;padding:110px 0;align-items:stretch;">
-<div class="cine-media"><img src="assets/campo-historia.jpg" alt="Panorámica Golf al atardecer"></div>
-<div class="contact-panel">
-<div class="eyebrow" style="color:rgba(255,255,255,0.6);">Reserva</div>
-<h2>Empieza tu escapada.</h2>
-<div class="contact-row">
-<div class="contact-details">
-<a href="mailto:golf@panoramicagrupo.com">golf@panoramicagrupo.com</a>
-<span class="sep">·</span>
-<a href="tel:+34964493072">+34 964 49 30 72</a>
-<span class="sep">·</span>
-<span>Urb. Panorámica s/n, 12320 Sant Jordi (Castellón)</span>
+<section class="cine-section right" id="golf-gastronomia">
+<div class="cine-media"><img src="assets/campo-historia.jpg" alt="Golf y gastronomía en Panorámica"></div>
+<div class="cine-content">
+<div class="eyebrow">Golf &amp; Gastronomía</div>
+<h2>Experiencias que combinan golf y mesa</h2>
+<p>Seis propuestas pensadas para acompañar tu jornada de golf con la gastronomía de Restaurant Gökotta, desde un desayuno antes de salir al campo hasta una cena al atardecer.</p>
+</div>
+</section>
+
+<div class="exp-panel-wrap">
+<div class="exp-panel">
+<span class="coming-soon">Fichas en preparación — fotos, precios y detalles pendientes de recibir</span>
+<div class="exp-grid">
+
+<div class="exp-card">
+<img src="assets/restaurante-interior.jpg" alt="Breakfast Experience">
+<div class="exp-card-body">
+<h3>Breakfast Experience</h3>
+<div class="exp-meta">Antes de salir al campo</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
 </div>
 </div>
 
-<div class="contact-extra">
-<div class="contact-map">
-<iframe src="https://www.google.com/maps?q=Panor%C3%A1mica+Golf,+Urbanizaci%C3%B3n+Panor%C3%A1mica,+12320+Sant+Jordi&output=embed" loading="lazy" title="Cómo llegar a Panorámica Golf"></iframe>
-</div>
-<div class="contact-side">
-<div class="weather-widget" id="weatherWidget">
-<div class="weather-title">El tiempo en Panorámica</div>
-<div class="weather-days" id="weatherDays">
-<span class="weather-loading">Cargando previsión…</span>
+<div class="exp-card">
+<img src="assets/restaurante.jpg" alt="Lunch Classic">
+<div class="exp-card-body">
+<h3>Lunch Classic</h3>
+<div class="exp-meta">Comida clásica de mediodía</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
 </div>
 </div>
-<div class="social-row">
-<span class="eyebrow" style="color:rgba(255,255,255,0.55);">Síguenos</span>
-<a href="https://www.instagram.com/panoramicagolf/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
-</a>
-<a href="https://www.facebook.com/panoramica.golf/" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V4z"/></svg>
-</a>
+
+<div class="exp-card">
+<img src="assets/el-campo.jpg" alt="Menu Experience">
+<div class="exp-card-body">
+<h3>Menu Experience</h3>
+<div class="exp-meta">Menú degustación</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
 </div>
+</div>
+
+<div class="exp-card">
+<img src="assets/hero-aerial.jpg" alt="Paella Experience">
+<div class="exp-card-body">
+<h3>Paella Experience</h3>
+<div class="exp-meta">Arroz mediterráneo en el club</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
+</div>
+</div>
+
+<div class="exp-card">
+<img src="assets/alojamiento.jpg" alt="Steak Experience">
+<div class="exp-card-body">
+<h3>Steak Experience</h3>
+<div class="exp-meta">Selección de carnes a la brasa</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
+</div>
+</div>
+
+<div class="exp-card">
+<img src="assets/competiciones-bg.jpg" alt="Sunset Golf">
+<div class="exp-card-body">
+<h3>Sunset Golf</h3>
+<div class="exp-meta">Golf y cena al atardecer</div>
+<div class="exp-price">Contenido pendiente</div>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link">Más información</a>
 </div>
 </div>
 
 </div>
 </div>
+</div>
+
+<section class="page-cta" style="margin-top:80px;">
+<div class="eyebrow">Restaurante</div>
+<h2>Reserva tu mesa o tu experiencia Golf &amp; Gastronomía.</h2>
+<a href="mailto:golf@panoramicagrupo.com" class="btn btn-primary">Reservar ahora</a>
 </section>
 
 <footer>
@@ -504,50 +599,4 @@ a.addEventListener('click', () => {
 document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
 });
 });
-
-// Widget del tiempo — Open-Meteo (gratuito, sin clave), coordenadas de Sant Jordi (Castellón)
-(function () {
-const el = document.getElementById('weatherDays');
-if (!el) return;
-
-const ICONS = {
-sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>',
-cloudSun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><path d="M8 2.5v1.6M13.6 8H12M4 8H2.5M4.6 4.6l1.1 1.1M11.4 4.6l-1.1 1.1"/><path d="M8.5 15.5a4 4 0 0 1 4-3.9 4.6 4.6 0 0 1 8.8 1.4 3.4 3.4 0 0 1-.8 6.5H8.2a3 3 0 0 1-.7-5.9z"/></svg>',
-cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 18.5a4 4 0 0 1 .3-8 5.5 5.5 0 0 1 10.6-1.6A4 4 0 0 1 17 18.5z"/></svg>',
-fog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9.5a4 4 0 0 1 .3-.02A5.5 5.5 0 0 1 16.8 7.9M4 14h16M4 17.5h16M4 10.5h9"/></svg>',
-rain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 14.5a4 4 0 0 1 .3-8 5.5 5.5 0 0 1 10.6-1.6A4 4 0 0 1 17 14.5z"/><path d="M8 18l-1 2.5M12.5 18l-1 2.5M17 18l-1 2.5"/></svg>',
-snow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 13.5a4 4 0 0 1 .3-8 5.5 5.5 0 0 1 10.6-1.6A4 4 0 0 1 17 13.5z"/><path d="M9 18v3M9 18l-1.6 1M9 18l1.6 1M15 18v3M15 18l-1.6 1M15 18l1.6 1"/></svg>',
-storm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 13a4 4 0 0 1 .3-8 5.5 5.5 0 0 1 10.6-1.6A4 4 0 0 1 17 13z"/><path d="M13 15l-3 4h3l-2 4"/></svg>'
-};
-const iconFor = (code) => {
-if (code === 0) return ICONS.sun;
-if ([1, 2].includes(code)) return ICONS.cloudSun;
-if (code === 3) return ICONS.cloud;
-if ([45, 48].includes(code)) return ICONS.fog;
-if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return ICONS.rain;
-if ([71, 73, 75, 77, 85, 86].includes(code)) return ICONS.snow;
-if ([95, 96, 99].includes(code)) return ICONS.storm;
-return ICONS.cloudSun;
-};
-
-const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-
-fetch('https://api.open-meteo.com/v1/forecast?latitude=40.5098&longitude=0.3321&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe%2FMadrid&forecast_days=5')
-.then(r => r.json())
-.then(data => {
-const days = data.daily.time;
-const codes = data.daily.weathercode;
-const tmax = data.daily.temperature_2m_max;
-const tmin = data.daily.temperature_2m_min;
-el.innerHTML = days.map((d, i) => {
-const dow = dayNames[new Date(d + 'T12:00:00').getDay()];
-return `<div class="weather-day"><span class="wd-name">${i === 0 ? 'Hoy' : dow}</span><span class="wd-icon">${iconFor(codes[i])}</span><span class="wd-temp"><b>${Math.round(tmax[i])}°</b> / ${Math.round(tmin[i])}°</span></div>`;
-}).join('');
-})
-.catch(() => {
-el.innerHTML = '<span class="weather-loading">No se ha podido cargar la previsión.</span>';
-});
-})();
 </script>
-</body>
-</html>
