@@ -379,6 +379,12 @@ nav.primary-nav{display:none;}
 .tab-panel.active{display:block;}
 .calendar-embed{width:100%;background:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.12);overflow:hidden;}
 .calendar-embed iframe{width:100%;height:min(82dvh, 900px);min-height:620px;border:0;display:block;}
+.tabs-select-mobile{display:none;}
+@media (max-width:700px){
+.tabs-nav{display:none;}
+.tabs-select-mobile{display:block;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.24);color:#fff;font-family:var(--sans);font-size:13px;letter-spacing:0.03em;text-transform:uppercase;padding:14px 16px;margin-bottom:24px;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;}
+.tabs-select-mobile option{background:var(--dark-panel);color:#fff;}
+}
 @media (max-width:600px){
 .tab-btn{padding:10px 8px;}
 .calendar-embed iframe{height:78dvh;min-height:560px;}
@@ -488,6 +494,13 @@ nav.primary-nav{display:none;}
 <button class="tab-btn" data-tab="liga">Liga de Verano</button>
 </div>
 
+<select class="tabs-select-mobile" id="tabsSelectMobile" aria-label="Elegir sección">
+<option value="calendario">Calendario</option>
+<option value="individual">Orden del Mérito Individual</option>
+<option value="parejas">Orden del Mérito Parejas</option>
+<option value="liga">Liga de Verano</option>
+</select>
+
 <div class="tab-panel active" id="tab-calendario">
 <p class="tab-intro">Aquí puedes consultar el calendario de torneos del club e inscribirte directamente en la prueba que te interese.</p>
 <div class="calendar-embed">
@@ -579,16 +592,20 @@ document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('ope
 });
 });
 
-// Pestañas de Competiciones
+// Pestañas de Competiciones — botones (escritorio) y desplegable (móvil), sincronizados
+function switchCompTab(target) {
+document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === target));
+document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + target));
+const select = document.getElementById('tabsSelectMobile');
+if (select && select.value !== target) select.value = target;
+}
 document.querySelectorAll('.tab-btn').forEach(btn => {
-btn.addEventListener('click', () => {
-const target = btn.dataset.tab;
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-btn.classList.add('active');
-document.getElementById('tab-' + target).classList.add('active');
+btn.addEventListener('click', () => switchCompTab(btn.dataset.tab));
 });
-});
+const tabsSelectMobile = document.getElementById('tabsSelectMobile');
+if (tabsSelectMobile) {
+tabsSelectMobile.addEventListener('change', () => switchCompTab(tabsSelectMobile.value));
+}
 
 // Comunicación con los embeds de ranking (rankingspanoramica.fairwaystudio.ai).
 // Versión simplificada: el iframe tiene una altura fija con su propio scroll

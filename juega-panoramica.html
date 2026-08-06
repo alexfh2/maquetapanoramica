@@ -391,6 +391,10 @@ nav.primary-nav{display:none;}
 .form-status{margin-top:14px;font-size:13px;}
 .form-status.success{color:#8fbf8f;}
 .form-status.error{color:#e08a8a;}
+.grupos-fallback{margin-top:20px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);}
+.grupos-fallback p{font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:12px;}
+.fallback-textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--sans);font-size:12.5px;padding:12px;resize:vertical;}
+.fallback-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px;}
 @media (max-width:700px){
 .form-grid{grid-template-columns:1fr 1fr;}
 }
@@ -633,9 +637,6 @@ nav.primary-nav{display:none;}
 <p>Rellena estos datos y nuestro equipo comercial te prepara una propuesta a medida.</p>
 
 <form id="gruposForm" class="grupos-form">
-<input type="hidden" name="access_key" value="TU_CLAVE_DE_WEB3FORMS_AQUI">
-<input type="hidden" name="subject" value="Nueva solicitud de grupo — Panorámica Golf">
-<input type="checkbox" name="botcheck" style="display:none;">
 
 <div class="form-grid">
 <div class="form-field">
@@ -695,6 +696,16 @@ nav.primary-nav{display:none;}
 
 <button type="submit" class="btn btn-primary" style="margin-top:24px;">Solicitar propuesta personalizada</button>
 <p id="gruposFormStatus" class="form-status"></p>
+
+<div id="gruposFallback" class="grupos-fallback" style="display:none;">
+<p>Si no se ha abierto tu programa de correo, copia estos datos y envíanoslos por email o WhatsApp:</p>
+<textarea id="gruposFallbackText" class="fallback-textarea" readonly rows="6"></textarea>
+<div class="fallback-actions">
+<button type="button" id="gruposCopyBtn" class="btn btn-outline">Copiar datos</button>
+<a id="gruposWhatsappLink" href="#" target="_blank" rel="noopener" class="btn btn-outline">Enviar por WhatsApp</a>
+<a href="mailto:golf@panoramicagrupo.com" class="text-link" style="color:#fff;">golf@panoramicagrupo.com</a>
+</div>
+</div>
 </form>
 
 </div>
@@ -817,42 +828,48 @@ document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('ope
 });
 });
 
-// Formulario de Grupos — envío vía Web3Forms (sin backend propio)
+// Formulario de Grupos — abre un email ya redactado, y siempre deja una alternativa manual
+// (copiar datos / WhatsApp) por si el visitante no tiene un cliente de correo configurado.
 const gruposForm = document.getElementById('gruposForm');
 if (gruposForm) {
 gruposForm.addEventListener('submit', function (e) {
 e.preventDefault();
 const status = document.getElementById('gruposFormStatus');
-const submitBtn = gruposForm.querySelector('button[type="submit"]');
-const formData = new FormData(gruposForm);
-submitBtn.disabled = true;
-submitBtn.textContent = 'Enviando…';
-status.textContent = '';
-status.className = 'form-status';
+const data = new FormData(gruposForm);
 
-fetch('https://api.web3forms.com/submit', {
-method: 'POST',
-body: formData
-})
-.then((res) => res.json())
-.then((data) => {
-if (data.success) {
-status.textContent = 'Gracias, hemos recibido tu solicitud. Te contactaremos en breve.';
-status.className = 'form-status success';
-gruposForm.reset();
-} else {
-status.textContent = 'No se ha podido enviar. Inténtalo de nuevo o escríbenos directamente a golf@panoramicagrupo.com.';
-status.className = 'form-status error';
+const lines = [];
+for (const [key, value] of data.entries()) {
+if (value) lines.push(key + ': ' + value);
 }
-})
-.catch(() => {
-status.textContent = 'No se ha podido enviar. Inténtalo de nuevo o escríbenos directamente a golf@panoramicagrupo.com.';
-status.className = 'form-status error';
-})
-.finally(() => {
-submitBtn.disabled = false;
-submitBtn.textContent = 'Solicitar propuesta personalizada';
+const plainText = lines.join('\n');
+
+const subject = encodeURIComponent('Nueva solicitud de grupo — Panorámica Golf');
+const body = encodeURIComponent(plainText);
+const mailtoUrl = 'mailto:golf@panoramicagrupo.com?subject=' + subject + '&body=' + body;
+
+window.location.href = mailtoUrl;
+
+status.textContent = 'Si tienes un programa de correo configurado, se habrá abierto ya con los datos rellenados.';
+status.className = 'form-status success';
+
+// Alternativa siempre visible, por si no se ha abierto ningún cliente de correo
+const fallback = document.getElementById('gruposFallback');
+const fallbackText = document.getElementById('gruposFallbackText');
+const whatsappLink = document.getElementById('gruposWhatsappLink');
+fallbackText.value = plainText;
+whatsappLink.href = 'https://wa.me/34673408388?text=' + encodeURIComponent('Solicitud de grupo — Panorámica Golf:\n\n' + plainText);
+fallback.style.display = 'block';
+
+const copyBtn = document.getElementById('gruposCopyBtn');
+copyBtn.onclick = function () {
+fallbackText.select();
+navigator.clipboard.writeText(fallbackText.value).then(function () {
+copyBtn.textContent = 'Copiado ✓';
+setTimeout(function () { copyBtn.textContent = 'Copiar datos'; }, 2000);
+}).catch(function () {
+copyBtn.textContent = 'Selecciona y copia manualmente';
 });
+};
 });
 }
 </script>
